@@ -1,0 +1,22 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-keitaro-logo-slider {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	.title {
+		flex-basis: 100%;
+	}
+
+	.logo {
+		width: auto;
+		margin: 15px;
+		max-height: 80px;
+	}
+}
