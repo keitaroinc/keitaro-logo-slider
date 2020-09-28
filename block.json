@@ -1,0 +1,11 @@
+{
+	"name": "keitaro/logo-slider",
+	"title": "Logo Slider",
+	"category": "media",
+	"icon": "image-flip-horizontal",
+	"description": "Easy to use logo slider for your website.",
+	"textdomain": "keitaro",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
