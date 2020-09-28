@@ -26,5 +26,6 @@ Create simple logo sliders to show important brands or companies associated with
 
 == To do ==
 
+* Include Bootstrap assets within plugin
 * Support image replacement with MediaReplaceFlow
 * Make visual design configurable
