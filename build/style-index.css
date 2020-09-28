@@ -1,0 +1,31 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-keitaro-logo-slider {
+  padding: 1.5rem auto; }
+  .wp-block-keitaro-logo-slider .title {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    margin-top: -4rem;
+    margin-bottom: 2.5rem;
+    color: white;
+    opacity: .9;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: .5rem; }
+  .wp-block-keitaro-logo-slider .logo {
+    max-height: 70px;
+    margin: 2rem 3rem; }
+  .wp-block-keitaro-logo-slider .carousel-item {
+    text-align: center; }
+
+.has-background .wp-block-keitaro-logo-slider {
+  padding: 1.5rem 1rem; }
+
+
+/*# sourceMappingURL=style-index.css.map*/
