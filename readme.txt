@@ -1,4 +1,4 @@
-=== Logo Slider ===
+=== Logo Slider by Keitaro ===
 Contributors:      Goce Mitevski
 Tags:              block
 Requires at least: 5.3.2
