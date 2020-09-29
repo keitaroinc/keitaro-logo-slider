@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Logo Slider by Keitaro
  * Description:     Easy to use logo slider for your WordPress website.
- * Plugin URI:      https://github.com/keitaroinc/logo-slider
+ * Plugin URI:      https://github.com/keitaroinc/keitaro-logo-slider
  * Version:         0.1.0
  * Author:          Goce Mitevski
  * License:         GPL-2.0-or-later
