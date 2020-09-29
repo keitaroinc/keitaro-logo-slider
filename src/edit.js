@@ -1,5 +1,5 @@
 import { Fragment } from '@wordpress/element';
-import { RangeControl } from '@wordpress/components';
+import { PanelBody, RangeControl } from '@wordpress/components';
 import { InspectorControls, MediaUploadCheck, MediaPlaceholder, RichText } from '@wordpress/block-editor';
 
 /**
@@ -34,13 +34,15 @@ export default function Edit({ className, attributes, setAttributes }) {
   return (
     <Fragment>
       <InspectorControls>
-        <RangeControl
-          label="Number of slides"
-          value={parseInt(attributes.numberOfSlides)}
-          onChange={(value) => setAttributes({ numberOfSlides: value })}
-          min={1}
-          max={10}
-        />
+        <PanelBody title={__('Slide options')}>
+          <RangeControl
+            label="Number of slides"
+            value={parseInt(attributes.numberOfSlides)}
+            onChange={(value) => setAttributes({ numberOfSlides: value })}
+            min={1}
+            max={10}
+          />
+        </PanelBody>
       </InspectorControls>
       {attributes.logos ? (
         <div className={className}>
