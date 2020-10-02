@@ -5,8 +5,8 @@
  * Plugin URI:      https://github.com/keitaroinc/keitaro-logo-slider
  * Version:         0.1.0
  * Author:          Goce Mitevski
- * License:         GPL-2.0-or-later
- * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
+ * License:         Apache-2.0
+ * License URI:     https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain:     keitaro-logo-slider
  *
  * @package         keitaro-logo-slider
