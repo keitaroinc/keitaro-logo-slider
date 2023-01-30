@@ -22,7 +22,10 @@ Create simple logo sliders to show important brands or companies associated with
 == Changelog ==
 
 = 0.1.1 =
-* Release
+* Implement Edit mode integrated with Media library
+
+= 0.1.0 =
+* Initial release
 
 == To do ==
 
