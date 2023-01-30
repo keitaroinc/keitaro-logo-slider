@@ -1,6 +1,11 @@
 import { Fragment } from '@wordpress/element';
 import { PanelBody, RangeControl } from '@wordpress/components';
-import { InspectorControls, MediaUploadCheck, MediaPlaceholder, RichText } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	MediaUploadCheck,
+	MediaPlaceholder,
+	RichText,
+} from '@wordpress/block-editor';
 
 /**
  * Retrieves the translation of text.
@@ -31,49 +36,66 @@ const ALLOWED_MEDIA_TYPES = ['image'];
  * @return {WPElement} Element to render.
  */
 export default function Edit({ className, attributes, setAttributes }) {
-  return (
-    <Fragment>
-      <InspectorControls>
-        <PanelBody title={__('Slide options')}>
-          <RangeControl
-            label="Number of slides"
-            value={parseInt(attributes.numberOfSlides)}
-            onChange={(value) => setAttributes({ numberOfSlides: value })}
-            min={1}
-            max={10}
-          />
-        </PanelBody>
-      </InspectorControls>
-      {attributes.logos ? (
-        <div className={className}>
-          <RichText
-            tagName="h2"
-            className="title"
-            value={attributes.title}
-            onChange={(content) => setAttributes({ title: content })}
-            placeholder={__('Catchy title goes here...', 'keitaro-logo-slider')}
-          />
-          {attributes.logos.map((item, key) => <img key={key} src={item.url} className="logo" alt={item.alt}></img>)}
-        </div>) : (
-          <div className='img-edit-before'>
-            <MediaUploadCheck>
-              <MediaPlaceholder
-                onSelect={
-                  (el) => {
-                    setAttributes({ logos: el.map(item => ({ url: item.url, alt: item.alt })) });
-                  }
-                }
-                isAppender={true}
-                className={className}
-                icon={`format-gallery`}
-                allowedTypes={ALLOWED_MEDIA_TYPES}
-                multiple={true}
-                labels={{ title: __('Logos', 'keitaro-logo-slider') }}
-              >
-              </MediaPlaceholder>
-            </MediaUploadCheck>
-          </div>
-        )}
-    </Fragment>
-  );
+	const mediaPreview =
+		attributes.logos.length &&
+		attributes.logos.map((item, key) => (
+			<img key={key} src={item.url} className="logo" alt={item.alt}></img>
+		));
+
+	return (
+		<Fragment>
+			<InspectorControls>
+				<PanelBody title={__('Slide options')}>
+					<RangeControl
+						label="Number of slides"
+						value={parseInt(attributes.numberOfSlides)}
+						onChange={(value) =>
+							setAttributes({ numberOfSlides: value })
+						}
+						min={1}
+						max={10}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			{attributes.logos && (
+				<div className={className}>
+					<RichText
+						tagName="h2"
+						className="title"
+						value={attributes.title}
+						onChange={(content) =>
+							setAttributes({ title: content })
+						}
+						placeholder={__(
+							'Catchy title goes here...',
+							'keitaro-logo-slider'
+						)}
+					/>
+				</div>
+			)}
+			<div className="img-edit-before">
+				<MediaUploadCheck>
+					<MediaPlaceholder
+						onSelect={(el) => {
+							setAttributes({
+								logos: el.map((item) => ({
+									url: item.url,
+									id: item.id,
+									alt: item.alt,
+								})),
+							});
+						}}
+						isAppender={true}
+						className={className}
+						icon={`format-gallery`}
+						allowedTypes={ALLOWED_MEDIA_TYPES}
+						multiple={true}
+						value={attributes.logos}
+						mediaPreview={mediaPreview}
+						labels={{ title: __('Logos', 'keitaro-logo-slider') }}
+					></MediaPlaceholder>
+				</MediaUploadCheck>
+			</div>
+		</Fragment>
+	);
 }
