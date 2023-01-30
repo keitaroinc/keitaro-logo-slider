@@ -1,6 +1,6 @@
 {
 	"name": "keitaro-logo-slider",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Easy to use logo slider for your WordPress website.",
 	"author": "Goce Mitevski",
 	"license": "Apache-2.0",
@@ -18,5 +18,8 @@
 		"bootstrap": "^4.5.2",
 		"jquery": "^3.5.1",
 		"popper.js": "^1.16.1"
+	},
+	"dependencies": {
+		"prettier": "^2.8.3"
 	}
 }
