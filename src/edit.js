@@ -37,7 +37,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
  */
 export default function Edit({ className, attributes, setAttributes }) {
 	const mediaPreview =
-		attributes.logos.length &&
+		attributes.logos &&
 		attributes.logos.map((item, key) => (
 			<img key={key} src={item.url} className="logo" alt={item.alt}></img>
 		));
