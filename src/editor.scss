@@ -5,18 +5,20 @@
  */
 
 .wp-block-keitaro-logo-slider {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
+  .components-placeholder__preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-	.title {
-		flex-basis: 100%;
-	}
+  .title {
+    flex-basis: 100%;
+  }
 
-	.logo {
-		width: auto;
-		margin: 15px;
-		max-height: 80px;
-	}
+  .logo {
+    width: auto;
+    margin: 15px;
+    max-height: 80px;
+  }
 }
