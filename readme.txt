@@ -3,7 +3,7 @@ Contributors:      Goce Mitevski
 Tags:              block
 Requires at least: 5.3.2
 Tested up to:      5.4.1
-Stable tag:        0.1.0
+Stable tag:        0.1.1
 Requires PHP:      7.0.0
 License:           Apache-2.0
 License URI:       https://www.apache.org/licenses/LICENSE-2.0
@@ -21,7 +21,7 @@ Create simple logo sliders to show important brands or companies associated with
 
 == Changelog ==
 
-= 0.1.0 =
+= 0.1.1 =
 * Release
 
 == To do ==
