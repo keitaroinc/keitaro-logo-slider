@@ -7,6 +7,5 @@
 	"textdomain": "keitaro",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css",
-	"viewScript": [ "file: ./node_modules/bootstrap/js/dist/carousel.js", "logosControls" ]
+	"style": "file:./build/style-index.css"
 }
