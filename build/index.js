@@ -7336,7 +7336,7 @@ __webpack_require__.r(__webpack_exports__);
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 
-var ALLOWED_MEDIA_TYPES = ['image'];
+var ALLOWED_MEDIA_TYPES = ["image"];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -7353,16 +7353,9 @@ function Edit(_ref) {
   var className = _ref.className,
     attributes = _ref.attributes,
     setAttributes = _ref.setAttributes;
-  var mediaPreview = attributes.logos && attributes.logos.map(function (item, key) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-      key: key,
-      src: item.url,
-      className: "logo",
-      alt: item.alt
-    });
-  });
   function chunkArray(arr, n) {
     var chunkLength = Math.max(arr.length / n);
+    console.log(arr);
     var chunks = [];
     var arrayForModify = [];
     arrayForModify.push.apply(arrayForModify, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(arr));
@@ -7372,7 +7365,7 @@ function Edit(_ref) {
     return chunks;
   }
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Slide options')
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Slide options")
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
     label: "Number of logos per slide",
     value: parseInt(attributes.numberOfSlides),
@@ -7394,7 +7387,7 @@ function Edit(_ref) {
         title: content
       });
     },
-    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Catchy title goes here...', 'keitaro-logo-slider')
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Catchy title goes here...", "keitaro-logo-slider")
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "img-edit-before"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
@@ -7403,7 +7396,7 @@ function Edit(_ref) {
     "data-ride": "carousel"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "carousel-inner"
-  }, chunkArray(attributes.logos, attributes.numberOfSlides).map(function (val, key) {
+  }, attributes.logos ? chunkArray(attributes.logos, attributes.numberOfSlides).map(function (val, key) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       key: key,
       className: "carousel-item ".concat(key < 1 ? "active" : "")
@@ -7416,7 +7409,7 @@ function Edit(_ref) {
         alt: item.alt
       });
     }));
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
+  }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Upload images")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
     className: "carousel-control-prev",
     "data-target": "#logosControls",
     type: "button",
@@ -7455,7 +7448,7 @@ function Edit(_ref) {
     multiple: true,
     value: attributes.logos,
     labels: {
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Logos', 'keitaro-logo-slider')
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Logos", "keitaro-logo-slider")
     }
   }))));
 }
@@ -7527,27 +7520,27 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('keitaro/logo-slider', {
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])("keitaro/logo-slider", {
   /**
    * This is the display title for your block, which can be translated with `i18n` functions.
    * The block inserter will show this name.
    */
-  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Logo Slider by Keitaro', 'keitaro-logo-slider'),
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Logo Slider by Keitaro", "keitaro-logo-slider"),
   /**
    * This is a short description for your block, can be translated with `i18n` functions.
    * It will be shown in the Block Tab in the Settings Sidebar.
    */
-  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Easy to use logo slider for your WordPress website.', 'keitaro-logo-slider'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Easy to use logo slider for your WordPress website.", "keitaro-logo-slider"),
   /**
    * Blocks are grouped into categories to help users browse and discover them.
    * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
    */
-  category: 'media',
+  category: "media",
   /**
    * An icon property should be specified to make it easier to identify a block.
    * These can be any of WordPress’ Dashicons, or a custom svg element.
    */
-  icon: 'image-flip-horizontal',
+  icon: "image-flip-horizontal",
   /**
    * Optional block extended support features.
    */
@@ -7557,35 +7550,35 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('kei
   },
   attributes: {
     title: {
-      type: 'string',
-      source: 'html',
-      selector: '.title',
-      default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Trusted by', 'keitaro-logo-slider')
+      type: "string",
+      source: "html",
+      selector: ".title",
+      default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Trusted by", "keitaro-logo-slider")
     },
     numberOfSlides: {
-      type: 'number',
+      type: "number",
       default: 1,
       minimum: 1
     },
     logos: {
-      type: 'array',
-      source: 'query',
-      selector: 'img',
+      type: "array",
+      source: "query",
+      selector: "img",
       query: {
         id: {
-          type: 'string',
-          source: 'attribute',
-          attribute: 'id'
+          type: "string",
+          source: "attribute",
+          attribute: "id"
         },
         url: {
-          type: 'string',
-          source: 'attribute',
-          attribute: 'src'
+          type: "string",
+          source: "attribute",
+          attribute: "src"
         },
         alt: {
-          type: 'string',
-          source: 'attribute',
-          attribute: 'alt'
+          type: "string",
+          source: "attribute",
+          attribute: "alt"
         }
       }
     }

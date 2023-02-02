@@ -1,9 +1,6 @@
-
 import { RichText } from "@wordpress/block-editor";
 
-import "./editor.scss"
-
-
+import "./editor.scss";
 
 /**
  * Retrieves the translation of text.
@@ -24,11 +21,11 @@ import { __ } from "@wordpress/i18n";
 export default function save({ attributes }) {
 	// https://stackoverflow.com/a/46122602
 	function chunkArray(arr, n) {
-		var chunkLength = Math.max(arr.length / n);
-		var chunks = [];
+		let chunkLength = Math.max(arr.length / n);
+		let chunks = [];
 		const arrayForModify = [];
 		arrayForModify.push(...arr);
-		for (var i = 0; i < chunkLength; i++) {
+		for (let i = 0; i < chunkLength; i++) {
 			chunks.push(arrayForModify.splice(0, n));
 		}
 		return chunks;
