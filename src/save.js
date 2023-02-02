@@ -18,18 +18,11 @@ import { __ } from "@wordpress/i18n";
  *
  * @return {WPElement} Element to render.
  */
+
+import chunkArray from "./index";
+
 export default function save({ attributes }) {
 	// https://stackoverflow.com/a/46122602
-	function chunkArray(arr, n) {
-		let chunkLength = Math.max(arr.length / n);
-		let chunks = [];
-		const arrayForModify = [];
-		arrayForModify.push(...arr);
-		for (let i = 0; i < chunkLength; i++) {
-			chunks.push(arrayForModify.splice(0, n));
-		}
-		return chunks;
-	}
 
 	return (
 		<div

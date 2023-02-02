@@ -35,19 +35,10 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit({ className, attributes, setAttributes }) {
-	function chunkArray(arr, n) {
-		let chunkLength = Math.max(arr.length / n);
-		console.log(arr);
-		let chunks = [];
-		const arrayForModify = [];
-		arrayForModify.push(...arr);
-		for (let i = 0; i < chunkLength; i++) {
-			chunks.push(arrayForModify.splice(0, n));
-		}
-		return chunks;
-	}
 
+import chunkArray from "./index";
+
+export default function Edit({ className, attributes, setAttributes }) {
 	return (
 		<Fragment>
 			<InspectorControls>
