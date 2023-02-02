@@ -42,12 +42,23 @@ export default function Edit({ className, attributes, setAttributes }) {
 			<img key={key} src={item.url} className="logo" alt={item.alt}></img>
 		));
 
+		function chunkArray(arr, n) {
+			var chunkLength = Math.max(arr.length / n);
+			var chunks = [];
+			const arrayForModify = [];
+			arrayForModify.push(...arr);
+			for (var i = 0; i < chunkLength; i++) {
+				chunks.push(arrayForModify.splice(0, n));
+			}
+			return chunks;
+		}
+
 	return (
 		<Fragment>
 			<InspectorControls>
 				<PanelBody title={__('Slide options')}>
 					<RangeControl
-						label="Number of slides"
+						label="Number of logos per slide"
 						value={parseInt(attributes.numberOfSlides)}
 						onChange={(value) =>
 							setAttributes({ numberOfSlides: value })
@@ -74,6 +85,55 @@ export default function Edit({ className, attributes, setAttributes }) {
 				</div>
 			)}
 			<div className="img-edit-before">
+				<div id="logosControls" className="carousel slide" data-ride="carousel">
+				<div className="carousel-inner">
+					{chunkArray(attributes.logos, attributes.numberOfSlides).map(
+						(val, key) => (
+							<div
+								key={key}
+								className={`carousel-item ${key < 1 ? "active" : ""}`}
+							>
+								{val.map((item, index) => (
+									<img
+										key={index}
+										className="logo"
+										id={item.id}
+										src={item.url}
+										alt={item.alt}
+									></img>
+								))}
+							</div>
+						)
+					)}
+				</div>
+				<button
+					className="carousel-control-prev"
+					data-target="#logosControls"
+					type="button"
+					data-slide="prev"
+				>
+					<span
+						className="carousel-control-prev-icon"
+						aria-hidden="true"
+					></span>
+					<span className="sr-only">
+						{__("Previous", "keitaro-logo-slider")}
+					</span>
+				</button>
+				<button
+					className="carousel-control-next"
+					data-target="#logosControls"
+					type="button"
+					data-slide="next"
+				>
+					<span
+						className="carousel-control-next-icon"
+						aria-hidden="true"
+					></span>
+					<span className="sr-only">{__("Next", "keitaro-logo-slider")}</span>
+				</button>
+			</div>
+				
 				<MediaUploadCheck>
 					<MediaPlaceholder
 						onSelect={(el) => {
@@ -91,9 +151,10 @@ export default function Edit({ className, attributes, setAttributes }) {
 						allowedTypes={ALLOWED_MEDIA_TYPES}
 						multiple={true}
 						value={attributes.logos}
-						mediaPreview={mediaPreview}
 						labels={{ title: __('Logos', 'keitaro-logo-slider') }}
-					></MediaPlaceholder>
+					>
+					</MediaPlaceholder>
+
 				</MediaUploadCheck>
 			</div>
 		</Fragment>
