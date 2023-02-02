@@ -7586,7 +7586,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("kei
 });
 function chunkArray(arr, n) {
   var chunkLength = Math.max(arr.length / n);
-  console.log(arr);
   var chunks = [];
   var arrayForModify = [];
   arrayForModify.push.apply(arrayForModify, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(arr));
