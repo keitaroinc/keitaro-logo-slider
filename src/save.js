@@ -26,8 +26,8 @@ export default function save({ attributes }) {
 
 	return (
 		<div
-			className={`slide-number-${attributes.numberOfSlides}`}
-			count={attributes.numberOfSlides}
+			className={`slide-number-${attributes.numberOfImagesPerSlide}`}
+			count={attributes.numberOfImagesPerSlide}
 		>
 			<RichText.Content
 				tagName="h2"
@@ -36,7 +36,7 @@ export default function save({ attributes }) {
 			/>
 			<div id="logosControls" className="carousel slide" data-ride="carousel">
 				<div className="carousel-inner">
-					{chunkArray(attributes.logos, attributes.numberOfSlides).map(
+					{chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
 						(val, key) => (
 							<div
 								key={key}

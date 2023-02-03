@@ -7357,10 +7357,10 @@ function Edit(_ref) {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("Slide options")
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["RangeControl"], {
     label: "Number of logos per slide",
-    value: parseInt(attributes.numberOfSlides),
+    value: parseInt(attributes.numberOfImagesPerSlide),
     onChange: function onChange(value) {
       return setAttributes({
-        numberOfSlides: value
+        numberOfImagesPerSlide: value
       });
     },
     min: 1,
@@ -7385,7 +7385,7 @@ function Edit(_ref) {
     "data-ride": "carousel"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "carousel-inner"
-  }, attributes.logos ? Object(_index__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes.logos, attributes.numberOfSlides).map(function (val, key) {
+  }, attributes.logos ? Object(_index__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes.logos, attributes.numberOfImagesPerSlide).map(function (val, key) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       key: key,
       className: "carousel-item ".concat(key < 1 ? "active" : "")
@@ -7547,7 +7547,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("kei
       selector: ".title",
       default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Trusted by", "keitaro-logo-slider")
     },
-    numberOfSlides: {
+    numberOfImagesPerSlide: {
       type: "number",
       default: 1,
       minimum: 1
@@ -7587,12 +7587,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("kei
 function chunkArray(arr, n) {
   var chunkLength = Math.max(arr.length / n);
   var chunks = [];
-  var arrayForModify = [];
-  arrayForModify.push.apply(arrayForModify, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(arr));
-  for (var i = 0; i < chunkLength; i++) {
-    chunks.push(arrayForModify.splice(0, n));
+  if (arr.length === n) {
+    chunks.push(arr);
+    return chunks;
+  } else {
+    var arrayForModify = [];
+    arrayForModify.push.apply(arrayForModify, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(arr));
+    for (var i = 0; i < chunkLength; i++) {
+      chunks.push(arrayForModify.splice(0, n));
+    }
+    return chunks;
   }
-  return chunks;
 }
 /* harmony default export */ __webpack_exports__["default"] = (chunkArray);
 
@@ -7644,8 +7649,8 @@ function save(_ref) {
   // https://stackoverflow.com/a/46122602
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "slide-number-".concat(attributes.numberOfSlides),
-    count: attributes.numberOfSlides
+    className: "slide-number-".concat(attributes.numberOfImagesPerSlide),
+    count: attributes.numberOfImagesPerSlide
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"].Content, {
     tagName: "h2",
     className: "title",
@@ -7656,7 +7661,7 @@ function save(_ref) {
     "data-ride": "carousel"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "carousel-inner"
-  }, Object(_index__WEBPACK_IMPORTED_MODULE_4__["default"])(attributes.logos, attributes.numberOfSlides).map(function (val, key) {
+  }, Object(_index__WEBPACK_IMPORTED_MODULE_4__["default"])(attributes.logos, attributes.numberOfImagesPerSlide).map(function (val, key) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       key: key,
       className: "carousel-item ".concat(key < 1 ? "active" : "")

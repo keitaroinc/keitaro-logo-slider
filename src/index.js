@@ -77,7 +77,7 @@ registerBlockType("keitaro/logo-slider", {
 			selector: ".title",
 			default: __("Trusted by", "keitaro-logo-slider"),
 		},
-		numberOfSlides: {
+		numberOfImagesPerSlide: {
 			type: "number",
 			default: 1,
 			minimum: 1,
@@ -120,12 +120,17 @@ registerBlockType("keitaro/logo-slider", {
 function chunkArray(arr, n) {
 	let chunkLength = Math.max(arr.length / n);
 	let chunks = [];
-	const arrayForModify = [];
-	arrayForModify.push(...arr);
-	for (let i = 0; i < chunkLength; i++) {
-		chunks.push(arrayForModify.splice(0, n));
+	if(arr.length === n){
+		chunks.push(arr)
+		return chunks
+	}else {
+		const arrayForModify = [];
+		arrayForModify.push(...arr);
+		for (let i = 0; i < chunkLength; i++) {
+			chunks.push(arrayForModify.splice(0, n));
+		}
+		return chunks;
 	}
-	return chunks;
 }
 
 export default chunkArray;

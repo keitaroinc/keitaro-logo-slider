@@ -45,8 +45,8 @@ export default function Edit({ className, attributes, setAttributes }) {
 				<PanelBody title={__("Slide options")}>
 					<RangeControl
 						label="Number of logos per slide"
-						value={parseInt(attributes.numberOfSlides)}
-						onChange={(value) => setAttributes({ numberOfSlides: value })}
+						value={parseInt(attributes.numberOfImagesPerSlide)}
+						onChange={(value) => setAttributes({ numberOfImagesPerSlide: value })}
 						min={1}
 						max={10}
 					/>
@@ -67,7 +67,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 				<div id="logosControls" className="carousel slide" data-ride="carousel">
 					<div className="carousel-inner">
 						{attributes.logos ? (
-							chunkArray(attributes.logos, attributes.numberOfSlides).map(
+							chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
 								(val, key) => (
 									<div
 										key={key}
