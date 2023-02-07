@@ -7369,7 +7369,42 @@ function Edit(_ref) {
     },
     min: 1,
     max: attributes.logos ? attributes.logos.length : 10
-  }))), attributes.logos && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["RangeControl"], {
+    label: "Width of your Image",
+    value: parseInt(attributes.widthOfImages),
+    onChange: function onChange(value) {
+      return setAttributes({
+        widthOfImages: value
+      });
+    },
+    min: 1,
+    max: 200
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["RangeControl"], {
+    label: "Heigth of your Image",
+    value: parseInt(attributes.heightOfImages),
+    onChange: function onChange(value) {
+      return setAttributes({
+        heightOfImages: value
+      });
+    },
+    min: 1,
+    max: 200
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["__experimentalRadioGroup"], {
+    label: "Width",
+    defaultChecked: "px",
+    onChange: function onChange(value) {
+      return setAttributes({
+        typeOfProperties: value
+      });
+    },
+    checked: attributes.typeOfProperties
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["__experimentalRadio"], {
+    value: "px"
+  }, "PX"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["__experimentalRadio"], {
+    value: "rem"
+  }, "REM"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["__experimentalRadio"], {
+    value: "em"
+  }, "EM")))), attributes.logos && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
     tagName: "h2",
     className: "title",
     value: attributes.title,
@@ -7510,6 +7545,20 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])("kei
       type: "number",
       default: 1,
       minimum: 1
+    },
+    widthOfImages: {
+      type: "number",
+      default: 50,
+      minimum: 1
+    },
+    heightOfImages: {
+      type: "number",
+      default: 50,
+      minimum: 1
+    },
+    typeOfProperties: {
+      type: "string",
+      default: "px"
     },
     logos: {
       type: "array",

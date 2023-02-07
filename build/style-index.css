@@ -3955,7 +3955,7 @@ a.text-dark:hover, a.text-dark:focus {
   letter-spacing: 0.5rem;
 }
 .wp-block-keitaro-logo-slider .logo {
-  max-height: 50px;
+  max-height: 200px;
   margin: 3rem;
 }
 .wp-block-keitaro-logo-slider .carousel-item {
