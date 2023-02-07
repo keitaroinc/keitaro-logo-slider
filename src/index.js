@@ -116,21 +116,3 @@ registerBlockType("keitaro/logo-slider", {
 	 */
 	save,
 });
-
-function chunkArray(arr, n) {
-	let chunkLength = Math.max(arr.length / n);
-	let chunks = [];
-	if(arr.length === n){
-		chunks.push(arr)
-		return chunks
-	}else {
-		const arrayForModify = [];
-		arrayForModify.push(...arr);
-		for (let i = 0; i < chunkLength; i++) {
-			chunks.push(arrayForModify.splice(0, n));
-		}
-		return chunks;
-	}
-}
-
-export default chunkArray;
