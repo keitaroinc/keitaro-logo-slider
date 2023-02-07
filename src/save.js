@@ -19,11 +19,9 @@ import { __ } from "@wordpress/i18n";
  * @return {WPElement} Element to render.
  */
 
-import chunkArray from "./index";
+import Slider from "./slider";
 
 export default function save({ attributes }) {
-	// https://stackoverflow.com/a/46122602
-
 	return (
 		<div
 			className={`slide-number-${attributes.numberOfImagesPerSlide}`}
@@ -34,54 +32,7 @@ export default function save({ attributes }) {
 				className="title"
 				value={attributes.title}
 			/>
-			<div id="logosControls" className="carousel slide" data-ride="carousel">
-				<div className="carousel-inner">
-					{chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
-						(val, key) => (
-							<div
-								key={key}
-								className={`carousel-item ${key < 1 ? "active" : ""}`}
-							>
-								{val.map((item, index) => (
-									<img
-										key={index}
-										className="logo"
-										id={item.id}
-										src={item.url}
-										alt={item.alt}
-									></img>
-								))}
-							</div>
-						)
-					)}
-				</div>
-				<button
-					className="carousel-control-prev"
-					data-target="#logosControls"
-					type="button"
-					data-slide="prev"
-				>
-					<span
-						className="carousel-control-prev-icon"
-						aria-hidden="true"
-					></span>
-					<span className="sr-only">
-						{__("Previous", "keitaro-logo-slider")}
-					</span>
-				</button>
-				<button
-					className="carousel-control-next"
-					data-target="#logosControls"
-					type="button"
-					data-slide="next"
-				>
-					<span
-						className="carousel-control-next-icon"
-						aria-hidden="true"
-					></span>
-					<span className="sr-only">{__("Next", "keitaro-logo-slider")}</span>
-				</button>
-			</div>
+			<Slider attributes={attributes} />
 		</div>
 	);
 }

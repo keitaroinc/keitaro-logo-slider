@@ -1,4 +1,3 @@
-import { Fragment } from "@wordpress/element";
 import { PanelBody, RangeControl } from "@wordpress/components";
 import {
 	InspectorControls,
@@ -36,11 +35,13 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  * @return {WPElement} Element to render.
  */
 
-import chunkArray from "./index";
+import Slider from "./slider"
+
 
 export default function Edit({ className, attributes, setAttributes }) {
+	const mediaPreview = <Slider attributes={attributes} />;
 	return (
-		<Fragment>
+		<div className={className}>
 			<InspectorControls>
 				<PanelBody title={__("Slide options")}>
 					<RangeControl
@@ -48,12 +49,11 @@ export default function Edit({ className, attributes, setAttributes }) {
 						value={parseInt(attributes.numberOfImagesPerSlide)}
 						onChange={(value) => setAttributes({ numberOfImagesPerSlide: value })}
 						min={1}
-						max={10}
+						max={attributes.logos ? attributes.logos.length : 10}
 					/>
 				</PanelBody>
 			</InspectorControls>
 			{attributes.logos && (
-				<div className={className}>
 					<RichText
 						tagName="h2"
 						className="title"
@@ -61,62 +61,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						onChange={(content) => setAttributes({ title: content })}
 						placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					/>
-				</div>
 			)}
-			<div className="img-edit-before">
-				<div id="logosControls" className="carousel slide" data-ride="carousel">
-					<div className="carousel-inner">
-						{attributes.logos ? (
-							chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
-								(val, key) => (
-									<div
-										key={key}
-										className={`carousel-item ${key < 1 ? "active" : ""}`}
-									>
-										{val.map((item, index) => (
-											<img
-												key={index}
-												className="logo"
-												id={item.id}
-												src={item.url}
-												alt={item.alt}
-											></img>
-										))}
-									</div>
-								)
-							)
-						) : (
-							<p>Upload images</p>
-						)}
-					</div>
-					<button
-						className="carousel-control-prev"
-						data-target="#logosControls"
-						type="button"
-						data-slide="prev"
-					>
-						<span
-							className="carousel-control-prev-icon"
-							aria-hidden="true"
-						></span>
-						<span className="sr-only">
-							{__("Previous", "keitaro-logo-slider")}
-						</span>
-					</button>
-					<button
-						className="carousel-control-next"
-						data-target="#logosControls"
-						type="button"
-						data-slide="next"
-					>
-						<span
-							className="carousel-control-next-icon"
-							aria-hidden="true"
-						></span>
-						<span className="sr-only">{__("Next", "keitaro-logo-slider")}</span>
-					</button>
-				</div>
-
 				<MediaUploadCheck>
 					<MediaPlaceholder
 						onSelect={(el) => {
@@ -135,9 +80,9 @@ export default function Edit({ className, attributes, setAttributes }) {
 						multiple={true}
 						value={attributes.logos}
 						labels={{ title: __("Logos", "keitaro-logo-slider") }}
+						mediaPreview={mediaPreview}
 					></MediaPlaceholder>
 				</MediaUploadCheck>
-			</div>
-		</Fragment>
+		</div>
 	);
 }
