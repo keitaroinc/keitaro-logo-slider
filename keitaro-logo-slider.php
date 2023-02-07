@@ -28,10 +28,18 @@ function keitaro_logo_slider_block_init() {
 		);
 	}
 	$index_js     = 'build/index.js';
+	$view_js     = 'build/index.js';
 	$script_asset = require( $script_asset_path );
 	wp_register_script(
 		'keitaro-logo-slider-block-editor',
 		plugins_url( $index_js, __FILE__ ),
+		$script_asset['dependencies'],
+		$script_asset['version']
+	);
+
+	wp_register_script(
+		'keitaro-logo-slider-block-view',
+		plugins_url( $view_js, __FILE__ ),
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
@@ -57,6 +65,7 @@ function keitaro_logo_slider_block_init() {
 		'editor_script' => 'keitaro-logo-slider-block-editor',
 		'editor_style'  => 'keitaro-logo-slider-block-editor',
 		'style'         => 'keitaro-logo-slider-block',
+		'view_script' => 'keitaro-logo-slider-block-view',
 	) );
 }
 add_action( 'init', 'keitaro_logo_slider_block_init' );
