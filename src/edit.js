@@ -44,6 +44,12 @@ const ALLOWED_MEDIA_TYPES = ["image"];
 import Slider from "./slider";
 
 export default function Edit({ className, attributes, setAttributes }) {
+	React.useEffect(() => {
+		if (attributes.sliderId == 1) {
+			const randomNumber = Math.floor(Math.random() * 100 + 1);
+			setAttributes({ sliderId: randomNumber });
+		}
+	});
 	const mediaPreview = <Slider attributes={attributes} />;
 	return (
 		<div className={className}>
@@ -78,9 +84,9 @@ export default function Edit({ className, attributes, setAttributes }) {
 						selected={attributes.typeOfProperties}
 						onChange={(value) => setAttributes({ typeOfProperties: value })}
 						options={[
-							{ label: 'Pixels (px)', value: 'px' },
-							{ label: 'Font size of the parent element (em)', value: 'em' },
-							{ label: 'Font size of the root element (rem)', value: 'rem' },
+							{ label: "Pixels (px)", value: "px" },
+							{ label: "Font size of the parent element (em)", value: "em" },
+							{ label: "Font size of the root element (rem)", value: "rem" },
 						]}
 					/>
 				</PanelBody>
