@@ -87,6 +87,24 @@ registerBlockType("keitaro/logo-slider", {
 			default: 1,
 			minimum: 1,
 		},
+		widthOfImages: {
+			type: "number",
+			default: 50,
+			minimum: 1,
+		},
+		heightOfImages: {
+			type: "number",
+			default: 50,
+			minimum: 1,
+		},
+		typeOfProperties: {
+			type: "string",
+			default: "px",
+		},
+		sliderId: {
+            type: "string",
+            default: null
+        },
 		logos: {
 			type: "array",
 			source: "query",

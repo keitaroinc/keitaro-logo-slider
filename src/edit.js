@@ -1,4 +1,10 @@
-import { PanelBody, RangeControl } from "@wordpress/components";
+import {
+	PanelBody,
+	RangeControl,
+	RadioControl,
+	__experimentalRadio as Radio,
+	__experimentalRadioGroup as RadioGroup,
+} from "@wordpress/components";
 import {
 	InspectorControls,
 	MediaUploadCheck,
@@ -35,10 +41,15 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  * @return {WPElement} Element to render.
  */
 
-import Slider from "./slider"
-
+import Slider from "./slider";
 
 export default function Edit({ className, attributes, setAttributes }) {
+	React.useEffect(() => {
+		if (attributes.sliderId === null) {
+			const randomNumber = (Math.random() + 1).toString(36).substring(7);
+			setAttributes({ sliderId: randomNumber });
+		}
+	});
 	const mediaPreview = <Slider attributes={attributes} />;
 	return (
 		<div className={className}>
@@ -47,42 +58,69 @@ export default function Edit({ className, attributes, setAttributes }) {
 					<RangeControl
 						label="Number of logos per slide"
 						value={parseInt(attributes.numberOfImagesPerSlide)}
-						onChange={(value) => setAttributes({ numberOfImagesPerSlide: value })}
+						onChange={(value) =>
+							setAttributes({ numberOfImagesPerSlide: value })
+						}
 						min={1}
 						max={attributes.logos ? attributes.logos.length : 10}
+					/>
+					<RangeControl
+						label="Maximum Logo Width"
+						value={parseInt(attributes.widthOfImages)}
+						onChange={(value) => setAttributes({ widthOfImages: value })}
+						min={1}
+						max={200}
+					/>
+					<RangeControl
+						label="Maximum Logo Height"
+						value={parseInt(attributes.heightOfImages)}
+						onChange={(value) => setAttributes({ heightOfImages: value })}
+						min={1}
+						max={200}
+					/>
+					<RadioControl
+						label="Image Size Unit"
+						help="The unit that's going to be used while calculating the image size"
+						selected={attributes.typeOfProperties}
+						onChange={(value) => setAttributes({ typeOfProperties: value })}
+						options={[
+							{ label: "Pixels (px)", value: "px" },
+							{ label: "Font size of the parent element (em)", value: "em" },
+							{ label: "Font size of the root element (rem)", value: "rem" },
+						]}
 					/>
 				</PanelBody>
 			</InspectorControls>
 			{attributes.logos && (
-					<RichText
-						tagName="h2"
-						className="title"
-						value={attributes.title}
-						onChange={(content) => setAttributes({ title: content })}
-						placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
-					/>
+				<RichText
+					tagName="h2"
+					className="title"
+					value={attributes.title}
+					onChange={(content) => setAttributes({ title: content })}
+					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
+				/>
 			)}
-				<MediaUploadCheck>
-					<MediaPlaceholder
-						onSelect={(el) => {
-							setAttributes({
-								logos: el.map((item) => ({
-									url: item.url,
-									id: item.id,
-									alt: item.alt,
-								})),
-							});
-						}}
-						isAppender={true}
-						className={className}
-						icon={`format-gallery`}
-						allowedTypes={ALLOWED_MEDIA_TYPES}
-						multiple={true}
-						value={attributes.logos}
-						labels={{ title: __("Logos", "keitaro-logo-slider") }}
-						mediaPreview={mediaPreview}
-					></MediaPlaceholder>
-				</MediaUploadCheck>
+			<MediaUploadCheck>
+				<MediaPlaceholder
+					onSelect={(el) => {
+						setAttributes({
+							logos: el.map((item) => ({
+								url: item.url,
+								id: item.id,
+								alt: item.alt,
+							})),
+						});
+					}}
+					isAppender={true}
+					className={className}
+					icon={`format-gallery`}
+					allowedTypes={ALLOWED_MEDIA_TYPES}
+					multiple={true}
+					value={attributes.logos}
+					labels={{ title: __("Logos", "keitaro-logo-slider") }}
+					mediaPreview={mediaPreview}
+				></MediaPlaceholder>
+			</MediaUploadCheck>
 		</div>
 	);
 }
