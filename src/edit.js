@@ -45,8 +45,8 @@ import Slider from "./slider";
 
 export default function Edit({ className, attributes, setAttributes }) {
 	React.useEffect(() => {
-		if (attributes.sliderId == 1) {
-			const randomNumber = Math.floor(Math.random() * 100 + 1);
+		if (attributes.sliderId === null) {
+			const randomNumber = (Math.random() + 1).toString(36).substring(7);
 			setAttributes({ sliderId: randomNumber });
 		}
 	});

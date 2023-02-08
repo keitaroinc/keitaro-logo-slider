@@ -102,8 +102,8 @@ registerBlockType("keitaro/logo-slider", {
 			default: "px",
 		},
 		sliderId: {
-            type: "number",
-            default: 1
+            type: "string",
+            default: null
         },
 		logos: {
 			type: "array",

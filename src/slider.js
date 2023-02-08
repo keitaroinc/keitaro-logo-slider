@@ -20,7 +20,7 @@ export default function Slider({ attributes }) {
 	}
 
 	return (
-		<div id={`logosControls${attributes.sliderId}`} className="carousel slide" data-ride="carousel">
+		<div id={`logosControls-${attributes.sliderId}`} className="carousel slide" data-ride="carousel">
 			<div className="carousel-inner">
 				{attributes.logos ? (
 					chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
@@ -51,7 +51,7 @@ export default function Slider({ attributes }) {
 			</div>
 			<button
 				className="carousel-control-prev"
-				data-target={`#logosControls${attributes.sliderId}`}
+				data-target={`#logosControls-${attributes.sliderId}`}
 				type="button"
 				data-slide="prev"
 			>
@@ -60,7 +60,7 @@ export default function Slider({ attributes }) {
 			</button>
 			<button
 				className="carousel-control-next"
-				data-target={`#logosControls${attributes.sliderId}`}
+				data-target={`#logosControls-${attributes.sliderId}`}
 				type="button"
 				data-slide="next"
 			>

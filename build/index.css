@@ -1,1 +1,27 @@
-.wp-block-keitaro-logo-slider .components-placeholder__preview{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;max-width:100%;max-height:100%;overflow:hidden}.wp-block-keitaro-logo-slider .title{flex-basis:100%}.logo{margin:3rem}.carousel-item{text-align:center}
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-keitaro-logo-slider .components-placeholder__preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+.wp-block-keitaro-logo-slider .title {
+  flex-basis: 100%;
+}
+
+.logo {
+  margin: 3rem;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+/*# sourceMappingURL=index.css.map*/
