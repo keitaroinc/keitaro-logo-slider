@@ -1,7 +1,5 @@
 import { __ } from "@wordpress/i18n";
 
-import "./editor.scss";
-
 export default function Slider({ attributes }) {
 	function chunkArray(arr, n) {
 		let chunkLength = Math.max(arr.length / n);
@@ -20,7 +18,12 @@ export default function Slider({ attributes }) {
 	}
 
 	return (
-		<div id={`logosControls-${attributes.sliderId}`} className="carousel slide" data-ride="carousel">
+		<div
+			id={`logosControls-${attributes.sliderId}`}
+			className="carousel slide"
+			data-ride="carousel"
+			style={{ background: attributes.sliderBackground }}
+		>
 			<div className="carousel-inner">
 				{attributes.logos ? (
 					chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(

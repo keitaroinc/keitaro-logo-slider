@@ -2,8 +2,7 @@ import {
 	PanelBody,
 	RangeControl,
 	RadioControl,
-	__experimentalRadio as Radio,
-	__experimentalRadioGroup as RadioGroup,
+	ColorPicker,
 } from "@wordpress/components";
 import {
 	InspectorControls,
@@ -88,6 +87,13 @@ export default function Edit({ className, attributes, setAttributes }) {
 							{ label: "Font size of the parent element (em)", value: "em" },
 							{ label: "Font size of the root element (rem)", value: "rem" },
 						]}
+					/>
+					<label className="label-background">Background</label>
+					<ColorPicker
+						color={attributes.sliderBackground}
+						onChange={(value) => setAttributes({sliderBackground: value})}
+						enableAlpha
+						defaultValue="#ffff"
 					/>
 				</PanelBody>
 			</InspectorControls>
