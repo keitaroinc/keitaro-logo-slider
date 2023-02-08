@@ -105,6 +105,10 @@ registerBlockType("keitaro/logo-slider", {
             type: "string",
             default: null
         },
+		sliderBackground: {
+			type: "string",
+			default: "#ffff"
+		},
 		logos: {
 			type: "array",
 			source: "query",
