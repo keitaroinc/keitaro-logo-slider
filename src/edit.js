@@ -66,7 +66,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						max={200}
 					/>
 					<RangeControl
-						label="Maximum Logo Heigth"
+						label="Maximum Logo Height"
 						value={parseInt(attributes.heightOfImages)}
 						onChange={(value) => setAttributes({ heightOfImages: value })}
 						min={1}
