@@ -37,8 +37,8 @@ export default function Slider({ attributes }) {
 										src={item.url}
 										alt={item.alt}
 										style={{
-											width: `${attributes.widthOfImages}${attributes.typeOfProperties}`,
-											height: `${attributes.heightOfImages}${attributes.typeOfProperties}`,
+											maxWidth: `${attributes.widthOfImages}${attributes.typeOfProperties}`,
+											maxHeight: `${attributes.heightOfImages}${attributes.typeOfProperties}`,
 										}}
 									></img>
 								))}
