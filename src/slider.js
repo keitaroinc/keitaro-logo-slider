@@ -1,7 +1,5 @@
 import { __ } from "@wordpress/i18n";
 
-import "./editor.scss";
-
 export default function Slider({ attributes }) {
 	function chunkArray(arr, n) {
 		let chunkLength = Math.max(arr.length / n);
