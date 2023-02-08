@@ -1,6 +1,7 @@
 import {
 	PanelBody,
 	RangeControl,
+	RadioControl,
 	__experimentalRadio as Radio,
 	__experimentalRadioGroup as RadioGroup,
 } from "@wordpress/components";
@@ -58,29 +59,30 @@ export default function Edit({ className, attributes, setAttributes }) {
 						max={attributes.logos ? attributes.logos.length : 10}
 					/>
 					<RangeControl
-						label="Width of your Image"
+						label="Maximum Logo Width"
 						value={parseInt(attributes.widthOfImages)}
 						onChange={(value) => setAttributes({ widthOfImages: value })}
 						min={1}
 						max={200}
 					/>
 					<RangeControl
-						label="Heigth of your Image"
+						label="Maximum Logo Heigth"
 						value={parseInt(attributes.heightOfImages)}
 						onChange={(value) => setAttributes({ heightOfImages: value })}
 						min={1}
 						max={200}
 					/>
-					<RadioGroup
-						label="Width"
-						defaultChecked="px"
+					<RadioControl
+						label="Image Size Unit"
+						help="The unit that's going to be used while calculating the image size"
+						selected={attributes.typeOfProperties}
 						onChange={(value) => setAttributes({ typeOfProperties: value })}
-						checked={attributes.typeOfProperties}
-					>
-						<Radio value="px">PX</Radio>
-						<Radio value="rem">REM</Radio>
-						<Radio value="em">EM</Radio>
-					</RadioGroup>
+						options={[
+							{ label: 'Pixels (px)', value: 'px' },
+							{ label: 'Font size of the parent element (em)', value: 'em' },
+							{ label: 'Font size of the root element (rem)', value: 'rem' },
+						]}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			{attributes.logos && (
