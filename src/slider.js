@@ -20,7 +20,7 @@ export default function Slider({ attributes }) {
 	return (
 		<div
 			id={`logosControls-${attributes.sliderId}`}
-			className="carousel slide"
+			className="carousel slide carousel-fade"
 			style={{ background: attributes.sliderBackground }}
 			data-bs-ride="carousel"
 		>
@@ -55,6 +55,7 @@ export default function Slider({ attributes }) {
 			<button
 				className="carousel-control-prev"
 				data-bs-target={`#logosControls-${attributes.sliderId}`}
+				data-bs-slide="prev"
 				type="button"
 			>
 				<span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -65,6 +66,7 @@ export default function Slider({ attributes }) {
 			<button
 				className="carousel-control-next"
 				data-bs-target={`#logosControls-${attributes.sliderId}`}
+				data-bs-slide="next"
 				type="button"
 			>
 				<span className="carousel-control-next-icon" aria-hidden="true"></span>
