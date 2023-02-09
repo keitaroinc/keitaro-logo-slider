@@ -21,8 +21,8 @@ export default function Slider({ attributes }) {
 		<div
 			id={`logosControls-${attributes.sliderId}`}
 			className="carousel slide"
-			data-ride="carousel"
 			style={{ background: attributes.sliderBackground }}
+			data-bs-ride="carousel"
 		>
 			<div className="carousel-inner">
 				{attributes.logos ? (
@@ -54,21 +54,23 @@ export default function Slider({ attributes }) {
 			</div>
 			<button
 				className="carousel-control-prev"
-				data-target={`#logosControls-${attributes.sliderId}`}
+				data-bs-target={`#logosControls-${attributes.sliderId}`}
 				type="button"
-				data-slide="prev"
 			>
 				<span className="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span className="sr-only">{__("Previous", "keitaro-logo-slider")}</span>
+				<span className="visually-hidden">
+					{__("Previous", "keitaro-logo-slider")}
+				</span>
 			</button>
 			<button
 				className="carousel-control-next"
-				data-target={`#logosControls-${attributes.sliderId}`}
+				data-bs-target={`#logosControls-${attributes.sliderId}`}
 				type="button"
-				data-slide="next"
 			>
 				<span className="carousel-control-next-icon" aria-hidden="true"></span>
-				<span className="sr-only">{__("Next", "keitaro-logo-slider")}</span>
+				<span className="visually-hidden">
+					{__("Next", "keitaro-logo-slider")}
+				</span>
 			</button>
 		</div>
 	);
