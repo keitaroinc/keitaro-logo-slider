@@ -88,10 +88,17 @@ export default function Edit({ className, attributes, setAttributes }) {
 							{ label: "Font size of the root element (rem)", value: "rem" },
 						]}
 					/>
-					<label className="label-background">Background</label>
+					<label className="label-background">Slider Background</label>
 					<ColorPicker
 						color={attributes.sliderBackground}
-						onChange={(value) => setAttributes({sliderBackground: value})}
+						onChange={(value) => setAttributes({ sliderBackground: value })}
+						enableAlpha
+						defaultValue="#ffff"
+					/>
+					<label className="label-background">Arrow Color</label>
+					<ColorPicker
+						color={attributes.arrowColor}
+						onChange={(value) => setAttributes({ arrowColor: value })}
 						enableAlpha
 						defaultValue="#ffff"
 					/>

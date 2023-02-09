@@ -100,12 +100,16 @@ registerBlockType("keitaro/logo-slider", {
 			default: "px",
 		},
 		sliderId: {
-            type: "string",
-            default: null
-        },
+			type: "string",
+			default: null,
+		},
 		sliderBackground: {
 			type: "string",
-			default: "#ffff"
+			default: "#ffff",
+		},
+		arrowColor: {
+			type: "string",
+			default: "#ffff",
 		},
 		logos: {
 			type: "array",
