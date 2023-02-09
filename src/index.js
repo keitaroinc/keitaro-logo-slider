@@ -24,9 +24,7 @@ import "./style.scss";
 /**
  * External dependencies
  */
-import 'bootstrap/js/dist/carousel';
-import 'bootstrap/js/dist/collapse';
-import 'bootstrap/js/dist/util';
+import "bootstrap/js/dist/carousel";
 
 /**
  * Internal dependencies
