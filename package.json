@@ -15,8 +15,7 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^12.2.1",
-		"bootstrap": "^5.2.3",
-		"popper.js": "^1.16.1"
+		"bootstrap": "^5.2.3"
 	},
 	"dependencies": {
 		"prettier": "^2.8.3"
