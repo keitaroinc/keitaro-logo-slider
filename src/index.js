@@ -24,7 +24,7 @@ import "./style.scss";
 /**
  * External dependencies
  */
-import { Carousel, Collapse } from "bootstrap";
+import "bootstrap/js/dist/carousel";
 
 /**
  * Internal dependencies
@@ -100,12 +100,12 @@ registerBlockType("keitaro/logo-slider", {
 			default: "px",
 		},
 		sliderId: {
-			type: "string",
-			default: null,
-		},
+            type: "string",
+            default: null
+        },
 		sliderBackground: {
 			type: "string",
-			default: "#ffff",
+			default: "#ffff"
 		},
 		logos: {
 			type: "array",
