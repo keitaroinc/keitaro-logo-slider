@@ -20,7 +20,7 @@ export default function Slider({ attributes }) {
 	return (
 		<div
 			id={`logosControls-${attributes.sliderId}`}
-			className="carousel slide carousel-fade"
+			className="carousel slide"
 			style={{ background: attributes.sliderBackground }}
 			data-bs-ride="carousel"
 		>
