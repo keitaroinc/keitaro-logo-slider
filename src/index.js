@@ -111,6 +111,10 @@ registerBlockType("keitaro/logo-slider", {
 			type: "string",
 			default: "#ffff",
 		},
+		sliderEffect: {
+			type: "string",
+			default: "slide",
+		},
 		logos: {
 			type: "array",
 			source: "query",
