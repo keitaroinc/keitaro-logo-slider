@@ -83,7 +83,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						value={attributes.sliderEffect}
 						options={[
 							{ label: "Slide", value: "slide" },
-							{ label: "Fade", value: "slide carousel-fade" },
+							{ label: "Fade", value: "carousel-fade" },
 						]}
 						onChange={(value) => setAttributes({ sliderEffect: value })}
 						__nextHasNoMarginBottom
