@@ -3,6 +3,7 @@ import {
 	RangeControl,
 	RadioControl,
 	ColorPicker,
+	SelectControl,
 } from "@wordpress/components";
 import {
 	InspectorControls,
@@ -76,6 +77,16 @@ export default function Edit({ className, attributes, setAttributes }) {
 						onChange={(value) => setAttributes({ heightOfImages: value })}
 						min={1}
 						max={200}
+					/>
+					<SelectControl
+						label="Slider Effect"
+						value={attributes.sliderEffect}
+						options={[
+							{ label: "Slide", value: "slide" },
+							{ label: "Fade", value: "carousel-fade" },
+						]}
+						onChange={(value) => setAttributes({ sliderEffect: value })}
+						__nextHasNoMarginBottom
 					/>
 					<RadioControl
 						label="Image Size Unit"
