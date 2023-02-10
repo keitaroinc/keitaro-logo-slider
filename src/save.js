@@ -27,11 +27,13 @@ export default function save({ attributes }) {
 			className={`slide-number-${attributes.numberOfImagesPerSlide}`}
 			count={attributes.numberOfImagesPerSlide}
 		>
-			<RichText.Content
-				tagName="h2"
-				className="title"
-				value={attributes.title}
-			/>
+			{attributes && attributes.titleStatus === "on" ? (
+				<RichText.Content
+					tagName="h2"
+					className="title"
+					value={attributes.title}
+				/>
+			) : null}
 			<Slider attributes={attributes} />
 		</div>
 	);
