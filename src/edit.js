@@ -55,6 +55,15 @@ export default function Edit({ className, attributes, setAttributes }) {
 		<div className={className}>
 			<InspectorControls>
 				<PanelBody title={__("Slide options")}>
+					<RadioControl
+						label="Slider Title"
+						selected={attributes.titleStatus}
+						onChange={(value) => setAttributes({ titleStatus: value })}
+						options={[
+							{ label: "On", value: "on" },
+							{ label: "Off", value: "off" },
+						]}
+					/>
 					<RangeControl
 						label="Number of logos per slide"
 						value={parseInt(attributes.numberOfImagesPerSlide)}
@@ -115,7 +124,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			{attributes.logos && (
+			{attributes.logos && attributes.titleStatus === "on" && (
 				<RichText
 					tagName="h2"
 					className="title"
