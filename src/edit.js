@@ -152,14 +152,12 @@ export default function Edit({ className, attributes, setAttributes }) {
 						color={attributes.sliderBackground}
 						onChange={(value) => setAttributes({ sliderBackground: value })}
 						enableAlpha
-						defaultValue="#ffff"
 					/>
 					<label className="label-background">Arrow Color</label>
 					<ColorPicker
 						color={attributes.arrowColor}
 						onChange={(value) => setAttributes({ arrowColor: value })}
 						enableAlpha
-						defaultValue="#ffff"
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -171,8 +169,10 @@ export default function Edit({ className, attributes, setAttributes }) {
 					onChange={(content) => setAttributes({ title: content })}
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					style={{
-						marginTop: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
-						marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
+						top: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						marginBottom: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						background: attributes.sliderBackground,
+						// marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
 					}}
 				/>
 			)}
