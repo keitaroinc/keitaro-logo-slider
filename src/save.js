@@ -27,7 +27,7 @@ export default function save({ attributes }) {
 			className={`slide-number-${attributes.numberOfImagesPerSlide}`}
 			count={attributes.numberOfImagesPerSlide}
 		>
-			{attributes && attributes.titleStatus === "on" ? (
+			{attributes && attributes.showTitle ? (
 				<RichText.Content
 					tagName="h2"
 					className="title"

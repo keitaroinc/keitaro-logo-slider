@@ -80,9 +80,9 @@ registerBlockType("keitaro/logo-slider", {
 			selector: ".title",
 			default: __("Trusted by", "keitaro-logo-slider"),
 		},
-		titleStatus: {
-			type: "string",
-			default: "on",
+		showTitle: {
+			type: "boolean",
+			default: true,
 		},
 		titleMarginTop: {
 			type: "number",

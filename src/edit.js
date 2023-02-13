@@ -3,6 +3,7 @@ import {
 	RangeControl,
 	RadioControl,
 	ColorPicker,
+	CheckboxControl,
 	SelectControl,
 } from "@wordpress/components";
 import {
@@ -44,27 +45,28 @@ const ALLOWED_MEDIA_TYPES = ["image"];
 import Slider from "./slider";
 
 export default function Edit({ className, attributes, setAttributes }) {
+
 	React.useEffect(() => {
 		if (attributes.sliderId === null) {
 			const randomNumber = (Math.random() + 1).toString(36).substring(7);
 			setAttributes({ sliderId: randomNumber });
 		}
 	});
+
 	const mediaPreview = <Slider attributes={attributes} />;
+
 	return (
 		<div className={className}>
 			<InspectorControls>
 				<PanelBody title={__("Slide options")}>
-					<RadioControl
-						label="Slider Title"
-						selected={attributes.titleStatus}
-						onChange={(value) => setAttributes({ titleStatus: value })}
-						options={[
-							{ label: "On", value: "on" },
-							{ label: "Off", value: "off" },
-						]}
+					<CheckboxControl
+						label={`Show Slider Title`}
+						help={`Toggles the visibility of the Slider Title`}
+						checked={attributes.showTitle}
+						className={`slider-title-toggle`}
+						onChange={() => setAttributes({ showTitle: !attributes.showTitle })}
 					/>
-					{attributes.titleStatus === "on" && (
+					{attributes.showTitle && (
 						<>
 							<RangeControl
 								label="Top margin of slider title"
@@ -161,7 +163,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			{attributes.logos && attributes.titleStatus === "on" && (
+			{attributes.logos && attributes.showTitle && (
 				<RichText
 					tagName="h2"
 					className="title"
