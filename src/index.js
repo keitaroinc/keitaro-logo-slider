@@ -84,13 +84,21 @@ registerBlockType("keitaro/logo-slider", {
 			type: "boolean",
 			default: true,
 		},
-		titleMarginTop: {
+		titlePadding: {
+			type: "number",
+			default: 1,
+		},
+		blurTitlePlaceholder: {
+			type: "boolean",
+			default: true,
+		},
+		blurTitleSize: {
+			type: "number",
+			default: 1,
+		},
+		titleTopPosition: {
 			type: "number",
 			default: "-4",
-		},
-		titleMarginBottom: {
-			type: "number",
-			default: 2.5,
 		},
 		titleMarginUnit: {
 			type: "string",
@@ -121,11 +129,11 @@ registerBlockType("keitaro/logo-slider", {
 		},
 		sliderBackground: {
 			type: "string",
-			default: "#ffff",
+			default: "#ffffff",
 		},
 		arrowColor: {
 			type: "string",
-			default: "#ffff",
+			default: "#ffffff",
 		},
 		sliderEffect: {
 			type: "string",

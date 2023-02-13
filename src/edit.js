@@ -59,52 +59,75 @@ export default function Edit({ className, attributes, setAttributes }) {
 		<div className={className}>
 			<InspectorControls>
 				<PanelBody title={__("Slide options")}>
+					<SelectControl
+						label="Slider Effect"
+						value={attributes.sliderEffect}
+						options={[
+							{ label: "Slide", value: "slide" },
+							{ label: "Fade", value: "carousel-fade" },
+						]}
+						onChange={(value) => setAttributes({ sliderEffect: value })}
+						__nextHasNoMarginBottom
+					/>
 					<CheckboxControl
-						label={`Show Slider Title`}
-						help={`Toggles the visibility of the Slider Title`}
+						label={`Show Title`}
+						help={`Toggles the visibility of the slider title`}
 						checked={attributes.showTitle}
-						className={`slider-title-toggle`}
 						onChange={() => setAttributes({ showTitle: !attributes.showTitle })}
 					/>
-					{attributes.showTitle && (
-						<>
-							<RangeControl
-								label="Top margin of slider title"
-								value={parseInt(attributes.titleMarginTop)}
-								onChange={(value) => setAttributes({ titleMarginTop: value })}
-								min={-100.0}
-								max={100.0}
-								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
-							/>
-							<RangeControl
-								label="Bottom margin of slider title"
-								value={parseInt(attributes.titleMarginBottom)}
-								onChange={(value) =>
-									setAttributes({ titleMarginBottom: value })
-								}
-								min={-100.0}
-								max={100.0}
-								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
-							/>
-							<RadioControl
-								label="Title Margin Unit"
-								help="The unit that's going to be used while calculating the title margin"
-								selected={attributes.titleMarginUnit}
-								onChange={(value) => setAttributes({ titleMarginUnit: value })}
-								options={[
-									{ label: "Pixels (px)", value: "px" },
-									{
-										label: "Font size of the parent element (em)",
-										value: "em",
-									},
-									{
-										label: "Font size of the root element (rem)",
-										value: "rem",
-									},
-								]}
-							/>
-						</>
-					)}
+				</PanelBody>
+				<PanelBody opened={attributes.showTitle} title={__("Title options")}>
+					<React.Fragment>
+						<CheckboxControl
+							label={`Blur Title Background`}
+							help={`Blurs the background of the slider title`}
+							checked={attributes.blurTitlePlaceholder}
+							onChange={() => setAttributes({ blurTitlePlaceholder: !attributes.blurTitlePlaceholder })}
+						/>
+						<RangeControl
+							label="Title Padding Size"
+							value={parseInt(attributes.titlePadding)}
+							onChange={(value) => setAttributes({ titlePadding: value })}
+							min={0}
+							max={10}
+							step={1}
+						/>
+						{attributes.blurTitlePlaceholder && <RangeControl
+							label="Title Blur Size"
+							value={parseInt(attributes.blurTitleSize)}
+							onChange={(value) => setAttributes({ blurTitleSize: value })}
+							min={0}
+							max={20}
+							step={1}
+						/>}
+						<RangeControl
+							label="Top margin of slider title"
+							value={parseInt(attributes.titleTopPosition)}
+							onChange={(value) => setAttributes({ titleTopPosition: value })}
+							min={-100.0}
+							max={100.0}
+							step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
+						/>
+						<RadioControl
+							label="Title Margin Unit"
+							help="The unit that's going to be used while calculating the title margin"
+							selected={attributes.titleMarginUnit}
+							onChange={(value) => setAttributes({ titleMarginUnit: value })}
+							options={[
+								{ label: "Pixels (px)", value: "px" },
+								{
+									label: "Font size of the parent element (em)",
+									value: "em",
+								},
+								{
+									label: "Font size of the root element (rem)",
+									value: "rem",
+								},
+							]}
+						/>
+					</React.Fragment>
+				</PanelBody>
+				<PanelBody title={__("Logo Options")}>
 					<RangeControl
 						label="Number of logos per slide"
 						value={parseInt(attributes.numberOfImagesPerSlide)}
@@ -139,16 +162,8 @@ export default function Edit({ className, attributes, setAttributes }) {
 							{ label: "Font size of the root element (rem)", value: "rem" },
 						]}
 					/>
-					<SelectControl
-						label="Slider Effect"
-						value={attributes.sliderEffect}
-						options={[
-							{ label: "Slide", value: "slide" },
-							{ label: "Fade", value: "carousel-fade" },
-						]}
-						onChange={(value) => setAttributes({ sliderEffect: value })}
-						__nextHasNoMarginBottom
-					/>
+				</PanelBody>
+				<PanelBody title={__("Colors")}>
 					<label className="label-background">Slider Background</label>
 					<ColorPicker
 						color={attributes.sliderBackground}
@@ -171,10 +186,11 @@ export default function Edit({ className, attributes, setAttributes }) {
 					onChange={(content) => setAttributes({ title: content })}
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					style={{
-						top: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
-						marginBottom: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`,
+						marginBottom: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`,
 						background: attributes.sliderBackground,
-						// marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
+						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}rem)` : `none`,
+						padding: attributes.titlePadding ? attributes.titlePadding + `rem` : undefined
 					}}
 				/>
 			)}

@@ -33,10 +33,11 @@ export default function save({ attributes }) {
 					className="title"
 					value={attributes.title}
 					style={{
-						top: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
-						marginBottom: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`,
+						marginBottom: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`,
 						background: attributes.sliderBackground,
-						// marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
+						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}rem)` : `none`,
+						padding: attributes.titlePadding ? attributes.titlePadding + `rem` : undefined
 					}}
 				/>
 			) : null}

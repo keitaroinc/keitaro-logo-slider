@@ -57,34 +57,41 @@
  */
 
 .wp-block-keitaro-logo-slider {
-	padding: 1.5rem auto;
+  padding: 1.5rem auto;
 
-	.title {
-		position: relative;
-		text-align: center;
-		z-index: 1;
-		color: white;
-		opacity: 0.9;
-		text-transform: uppercase;
-		font-size: 1.5rem;
-		font-weight: normal;
-		letter-spacing: 0.5rem;
-		padding: $spacer;
-		backdrop-filter: blur($spacer*2);
-	}
+  .components-placeholder {
+    padding: 0;
+    box-shadow: none;
+  }
 
-	.logo {
-		max-height: 200px;
-		margin: 3rem;
-	}
+  .title {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    color: white;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.5rem;
+  }
 
-	.carousel-item {
-		text-align: center;
-	}
+  .invert {
+    filter: invert(100%);
+  }
+
+  .logo {
+    max-height: 200px;
+    margin: 3rem;
+  }
+
+  .carousel-item {
+    text-align: center;
+  }
 }
 
 .has-background {
-	.wp-block-keitaro-logo-slider {
-		padding: 1.5rem 1rem;
-	}
+  .wp-block-keitaro-logo-slider {
+    padding: 1.5rem 1rem;
+  }
 }
