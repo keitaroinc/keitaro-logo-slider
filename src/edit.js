@@ -64,20 +64,45 @@ export default function Edit({ className, attributes, setAttributes }) {
 							{ label: "Off", value: "off" },
 						]}
 					/>
-					<RangeControl
-						label="Margin bottom on slider title"
-						value={parseInt(attributes.titleMarginTop)}
-						onChange={(value) => setAttributes({ titleMarginTop: value })}
-						min={-100}
-						max={100}
-					/>
-					<RangeControl
-						label="Margin top on slider title"
-						value={parseInt(attributes.titleMarginBottom)}
-						onChange={(value) => setAttributes({ titleMarginBottom: value })}
-						min={-100}
-						max={100}
-					/>
+					{attributes.titleStatus === "on" && (
+						<>
+							<RangeControl
+								label="Top margin of slider title"
+								value={parseInt(attributes.titleMarginBottom)}
+								onChange={(value) =>
+									setAttributes({ titleMarginBottom: value })
+								}
+								min={-100.0}
+								max={100.0}
+								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
+							/>
+							<RangeControl
+								label="Bottom margin of slider title"
+								value={parseInt(attributes.titleMarginTop)}
+								onChange={(value) => setAttributes({ titleMarginTop: value })}
+								min={-100.0}
+								max={100.0}
+								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
+							/>
+							<RadioControl
+								label="Margin Title Unit"
+								help="The unit that's going to be used while calculating the title margin"
+								selected={attributes.titleMarginUnit}
+								onChange={(value) => setAttributes({ titleMarginUnit: value })}
+								options={[
+									{ label: "Pixels (px)", value: "px" },
+									{
+										label: "Font size of the parent element (em)",
+										value: "em",
+									},
+									{
+										label: "Font size of the root element (rem)",
+										value: "rem",
+									},
+								]}
+							/>
+						</>
+					)}
 					<RangeControl
 						label="Number of logos per slide"
 						value={parseInt(attributes.numberOfImagesPerSlide)}
@@ -101,16 +126,6 @@ export default function Edit({ className, attributes, setAttributes }) {
 						min={1}
 						max={200}
 					/>
-					<SelectControl
-						label="Slider Effect"
-						value={attributes.sliderEffect}
-						options={[
-							{ label: "Slide", value: "slide" },
-							{ label: "Fade", value: "carousel-fade" },
-						]}
-						onChange={(value) => setAttributes({ sliderEffect: value })}
-						__nextHasNoMarginBottom
-					/>
 					<RadioControl
 						label="Image Size Unit"
 						help="The unit that's going to be used while calculating the image size"
@@ -121,6 +136,16 @@ export default function Edit({ className, attributes, setAttributes }) {
 							{ label: "Font size of the parent element (em)", value: "em" },
 							{ label: "Font size of the root element (rem)", value: "rem" },
 						]}
+					/>
+					<SelectControl
+						label="Slider Effect"
+						value={attributes.sliderEffect}
+						options={[
+							{ label: "Slide", value: "slide" },
+							{ label: "Fade", value: "carousel-fade" },
+						]}
+						onChange={(value) => setAttributes({ sliderEffect: value })}
+						__nextHasNoMarginBottom
 					/>
 					<label className="label-background">Slider Background</label>
 					<ColorPicker
@@ -146,8 +171,8 @@ export default function Edit({ className, attributes, setAttributes }) {
 					onChange={(content) => setAttributes({ title: content })}
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					style={{
-						marginTop: `${attributes.titleMarginTop}rem`,
-						marginBottom: `${attributes.titleMarginBottom}rem`,
+						marginTop: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
 					}}
 				/>
 			)}

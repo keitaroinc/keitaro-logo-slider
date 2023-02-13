@@ -92,6 +92,10 @@ registerBlockType("keitaro/logo-slider", {
 			type: "number",
 			default: 2.5,
 		},
+		titleMarginUnit: {
+			type: "string",
+			default: "rem",
+		},
 		numberOfImagesPerSlide: {
 			type: "number",
 			default: 3,
