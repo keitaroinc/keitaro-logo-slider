@@ -33,8 +33,10 @@ export default function save({ attributes }) {
 					className="title"
 					value={attributes.title}
 					style={{
-						marginTop: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
-						marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
+						top: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						marginBottom: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						background: attributes.sliderBackground,
+						// marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
 					}}
 				/>
 			) : null}
