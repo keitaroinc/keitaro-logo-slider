@@ -84,6 +84,14 @@ registerBlockType("keitaro/logo-slider", {
 			type: "string",
 			default: "on",
 		},
+		titleMarginTop: {
+			type: "number",
+			default: "-4",
+		},
+		titleMarginBottom: {
+			type: "number",
+			default: 2.5,
+		},
 		numberOfImagesPerSlide: {
 			type: "number",
 			default: 3,

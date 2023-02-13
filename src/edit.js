@@ -65,6 +65,20 @@ export default function Edit({ className, attributes, setAttributes }) {
 						]}
 					/>
 					<RangeControl
+						label="Margin bottom on slider title"
+						value={parseInt(attributes.titleMarginTop)}
+						onChange={(value) => setAttributes({ titleMarginTop: value })}
+						min={-100}
+						max={100}
+					/>
+					<RangeControl
+						label="Margin top on slider title"
+						value={parseInt(attributes.titleMarginBottom)}
+						onChange={(value) => setAttributes({ titleMarginBottom: value })}
+						min={-100}
+						max={100}
+					/>
+					<RangeControl
 						label="Number of logos per slide"
 						value={parseInt(attributes.numberOfImagesPerSlide)}
 						onChange={(value) =>
@@ -131,6 +145,10 @@ export default function Edit({ className, attributes, setAttributes }) {
 					value={attributes.title}
 					onChange={(content) => setAttributes({ title: content })}
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
+					style={{
+						marginTop: `${attributes.titleMarginTop}rem`,
+						marginBottom: `${attributes.titleMarginBottom}rem`,
+					}}
 				/>
 			)}
 			<MediaUploadCheck>
