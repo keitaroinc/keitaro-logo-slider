@@ -32,6 +32,10 @@ export default function save({ attributes }) {
 					tagName="h2"
 					className="title"
 					value={attributes.title}
+					style={{
+						marginTop: `${attributes.titleMarginTop}${attributes.titleMarginUnit}`,
+						marginBottom: `${attributes.titleMarginBottom}${attributes.titleMarginUnit}`,
+					}}
 				/>
 			) : null}
 			<Slider attributes={attributes} />
