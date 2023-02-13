@@ -69,6 +69,8 @@
 		font-size: 1.5rem;
 		font-weight: normal;
 		letter-spacing: 0.5rem;
+		padding: $spacer;
+		backdrop-filter: blur($spacer*2);
 	}
 
 	.logo {
