@@ -85,7 +85,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
 							/>
 							<RadioControl
-								label="Margin Title Unit"
+								label="Title Margin Unit"
 								help="The unit that's going to be used while calculating the title margin"
 								selected={attributes.titleMarginUnit}
 								onChange={(value) => setAttributes({ titleMarginUnit: value })}
