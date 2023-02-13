@@ -68,18 +68,18 @@ export default function Edit({ className, attributes, setAttributes }) {
 						<>
 							<RangeControl
 								label="Top margin of slider title"
-								value={parseInt(attributes.titleMarginBottom)}
-								onChange={(value) =>
-									setAttributes({ titleMarginBottom: value })
-								}
+								value={parseInt(attributes.titleMarginTop)}
+								onChange={(value) => setAttributes({ titleMarginTop: value })}
 								min={-100.0}
 								max={100.0}
 								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
 							/>
 							<RangeControl
 								label="Bottom margin of slider title"
-								value={parseInt(attributes.titleMarginTop)}
-								onChange={(value) => setAttributes({ titleMarginTop: value })}
+								value={parseInt(attributes.titleMarginBottom)}
+								onChange={(value) =>
+									setAttributes({ titleMarginBottom: value })
+								}
 								min={-100.0}
 								max={100.0}
 								step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
