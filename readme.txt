@@ -54,6 +54,13 @@ When preparing a PR, please build and commit all assets from `/build` by running
 
 == Changelog ==
 
+= 0.2.2 =
+* Fix added empty space below slider due to inconsistent vertical positioning
+* Add contributors to package.json
+
+= 0.2.1 =
+* Update Contributors and Author lists
+
 = 0.2.0 =
 * Add toggle for slider title
 * Add setting for vertical position of the slider
