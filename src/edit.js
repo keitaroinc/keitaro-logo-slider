@@ -56,7 +56,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 	const mediaPreview = <Slider attributes={attributes} />;
 
 	return (
-		<div className={className}>
+		<div className={`position-relative ${className}`} style={{ top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`, }}>
 			<InspectorControls>
 				<PanelBody title={__("Slide options")}>
 					<SelectControl
@@ -186,8 +186,6 @@ export default function Edit({ className, attributes, setAttributes }) {
 					onChange={(content) => setAttributes({ title: content })}
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					style={{
-						top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`,
-						marginBottom: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`,
 						background: attributes.sliderBackground,
 						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}rem)` : `none`,
 						padding: attributes.titlePadding ? attributes.titlePadding + `rem` : undefined
