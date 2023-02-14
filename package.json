@@ -5,6 +5,11 @@
 	"author": "Goce Mitevski",
 	"license": "Apache-2.0",
 	"main": "build/index.js",
+	"contributors": [
+		{
+			"name": "Hristijan Petkovski"
+		}
+	],
 	"scripts": {
 		"build": "wp-scripts build",
 		"format:js": "wp-scripts format-js",
