@@ -54,6 +54,18 @@ When preparing a PR, please build and commit all assets from `/build` by running
 
 == Changelog ==
 
+= 0.2.0 =
+* Add toggle for slider title
+* Add setting for vertical position of the slider
+* Add setting for blur title background
+* Add setting for global unit of the slider
+* Add setting for number of logos per slide
+* Add setting for width and height of logos
+* Add setting for slider effect
+* Add setting for slider background color
+* Add setting for slider arrows color
+* Update Bootstrap version to **5.2.3**
+
 = 0.1.1 =
 * Implement Edit mode integrated with Media library
 
