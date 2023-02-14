@@ -58,15 +58,15 @@ export default function Edit({ className, attributes, setAttributes }) {
 	return (
 		<div className={`position-relative ${className}`} style={{ top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`, }}>
 			<InspectorControls>
-				<PanelBody title={__("Slide options")}>
+				<PanelBody title={__("Slider Options")}>
 					<SelectControl
-						label="Slider Effect"
-						value={attributes.sliderEffect}
+						label="Transition"
+						value={attributes.sliderTransition}
 						options={[
 							{ label: "Slide", value: "slide" },
 							{ label: "Fade", value: "carousel-fade" },
 						]}
-						onChange={(value) => setAttributes({ sliderEffect: value })}
+						onChange={(value) => setAttributes({ sliderTransition: value })}
 						__nextHasNoMarginBottom
 					/>
 					<CheckboxControl
@@ -76,11 +76,11 @@ export default function Edit({ className, attributes, setAttributes }) {
 						onChange={() => setAttributes({ showTitle: !attributes.showTitle })}
 					/>
 				</PanelBody>
-				<PanelBody opened={attributes.showTitle} title={__("Title options")}>
+				<PanelBody opened={attributes.showTitle} title={__("Title Options")}>
 					<React.Fragment>
 						<CheckboxControl
 							label={`Blur Title Background`}
-							help={`Blurs the background of the slider title`}
+							help={`Blurs the background of the slider title when background color is translucent`}
 							checked={attributes.blurTitlePlaceholder}
 							onChange={() => setAttributes({ blurTitlePlaceholder: !attributes.blurTitlePlaceholder })}
 						/>
@@ -163,7 +163,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						]}
 					/>
 				</PanelBody>
-				<PanelBody title={__("Colors")}>
+				<PanelBody title={__("Color Options")}>
 					<label className="label-background">Slider Background</label>
 					<ColorPicker
 						color={attributes.sliderBackground}

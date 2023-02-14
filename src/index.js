@@ -135,7 +135,7 @@ registerBlockType("keitaro/logo-slider", {
 			type: "string",
 			default: "#ffffff",
 		},
-		sliderEffect: {
+		sliderTransition: {
 			type: "string",
 			default: "slide",
 		},
