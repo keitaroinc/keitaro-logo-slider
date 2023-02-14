@@ -1,5 +1,5 @@
 === Logo Slider by Keitaro ===
-Contributors:      Goce Mitevski
+Contributors:      Goce Mitevski, Hristijan Petkovski
 Tags:              block
 Requires at least: 5.3.2
 Tested up to:      5.4.1
