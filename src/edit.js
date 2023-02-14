@@ -43,6 +43,7 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  */
 
 import Slider from "./slider";
+import { titleWithUnit } from "./helpers";
 
 export default function Edit({ className, attributes, setAttributes }) {
 
@@ -56,9 +57,26 @@ export default function Edit({ className, attributes, setAttributes }) {
 	const mediaPreview = <Slider attributes={attributes} />;
 
 	return (
-		<div className={`position-relative ${className}`} style={{ top: `${attributes.titleTopPosition}${attributes.titleMarginUnit}`, }}>
+		<div className={`position-relative ${className}`} style={{ top: `${attributes.titleTopPosition}${attributes.sliderUnit}`, }}>
 			<InspectorControls>
 				<PanelBody title={__("Slider Options")}>
+					<RadioControl
+						label="Unit"
+						help="The unit used while calculating the size of the elements within the slider"
+						selected={attributes.sliderUnit}
+						onChange={(value) => setAttributes({ sliderUnit: value })}
+						options={[
+							{ label: "Pixels (px)", value: "px" },
+							{
+								label: "Font size of the parent element (em)",
+								value: "em",
+							},
+							{
+								label: "Font size of the root element (rem)",
+								value: "rem",
+							},
+						]}
+					/>
 					<SelectControl
 						label="Transition"
 						value={attributes.sliderTransition}
@@ -78,58 +96,41 @@ export default function Edit({ className, attributes, setAttributes }) {
 				</PanelBody>
 				<PanelBody opened={attributes.showTitle} title={__("Title Options")}>
 					<React.Fragment>
-						<CheckboxControl
-							label={`Blur Title Background`}
-							help={`Blurs the background of the slider title when background color is translucent`}
-							checked={attributes.blurTitlePlaceholder}
-							onChange={() => setAttributes({ blurTitlePlaceholder: !attributes.blurTitlePlaceholder })}
-						/>
 						<RangeControl
-							label="Title Padding Size"
+							label={titleWithUnit('Padding', attributes.sliderUnit)}
 							value={parseInt(attributes.titlePadding)}
 							onChange={(value) => setAttributes({ titlePadding: value })}
 							min={0}
 							max={10}
 							step={1}
 						/>
+						<RangeControl
+							label={titleWithUnit('Top Position', attributes.sliderUnit)}
+							value={parseInt(attributes.titleTopPosition)}
+							onChange={(value) => setAttributes({ titleTopPosition: value })}
+							min={-100.0}
+							max={100.0}
+							step={attributes.sliderUnit !== "px" ? 0.1 : 1}
+						/>
+						<CheckboxControl
+							label={`Blur Background`}
+							help={`Blurs the background of the slider title when background color is translucent`}
+							checked={attributes.blurTitlePlaceholder}
+							onChange={() => setAttributes({ blurTitlePlaceholder: !attributes.blurTitlePlaceholder })}
+						/>
 						{attributes.blurTitlePlaceholder && <RangeControl
-							label="Title Blur Size"
+							label={titleWithUnit('Blur Size', attributes.sliderUnit)}
 							value={parseInt(attributes.blurTitleSize)}
 							onChange={(value) => setAttributes({ blurTitleSize: value })}
 							min={0}
 							max={20}
 							step={1}
 						/>}
-						<RangeControl
-							label="Top margin of slider title"
-							value={parseInt(attributes.titleTopPosition)}
-							onChange={(value) => setAttributes({ titleTopPosition: value })}
-							min={-100.0}
-							max={100.0}
-							step={attributes.titleMarginUnit !== "px" ? 0.1 : 1}
-						/>
-						<RadioControl
-							label="Title Margin Unit"
-							help="The unit that's going to be used while calculating the title margin"
-							selected={attributes.titleMarginUnit}
-							onChange={(value) => setAttributes({ titleMarginUnit: value })}
-							options={[
-								{ label: "Pixels (px)", value: "px" },
-								{
-									label: "Font size of the parent element (em)",
-									value: "em",
-								},
-								{
-									label: "Font size of the root element (rem)",
-									value: "rem",
-								},
-							]}
-						/>
 					</React.Fragment>
 				</PanelBody>
 				<PanelBody title={__("Logo Options")}>
 					<RangeControl
-						label="Number of logos per slide"
+						label="Logos per Slide"
 						value={parseInt(attributes.numberOfImagesPerSlide)}
 						onChange={(value) =>
 							setAttributes({ numberOfImagesPerSlide: value })
@@ -138,29 +139,18 @@ export default function Edit({ className, attributes, setAttributes }) {
 						max={attributes.logos ? attributes.logos.length : 10}
 					/>
 					<RangeControl
-						label="Maximum Logo Width"
+						label={titleWithUnit('Maximum Logo Width', attributes.sliderUnit)}
 						value={parseInt(attributes.widthOfImages)}
 						onChange={(value) => setAttributes({ widthOfImages: value })}
 						min={1}
 						max={200}
 					/>
 					<RangeControl
-						label="Maximum Logo Height"
+						label={titleWithUnit('Maximum Logo Height', attributes.sliderUnit)}
 						value={parseInt(attributes.heightOfImages)}
 						onChange={(value) => setAttributes({ heightOfImages: value })}
 						min={1}
 						max={200}
-					/>
-					<RadioControl
-						label="Image Size Unit"
-						help="The unit that's going to be used while calculating the image size"
-						selected={attributes.typeOfProperties}
-						onChange={(value) => setAttributes({ typeOfProperties: value })}
-						options={[
-							{ label: "Pixels (px)", value: "px" },
-							{ label: "Font size of the parent element (em)", value: "em" },
-							{ label: "Font size of the root element (rem)", value: "rem" },
-						]}
 					/>
 				</PanelBody>
 				<PanelBody title={__("Color Options")}>
@@ -187,8 +177,8 @@ export default function Edit({ className, attributes, setAttributes }) {
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					style={{
 						background: attributes.sliderBackground,
-						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}rem)` : `none`,
-						padding: attributes.titlePadding ? attributes.titlePadding + `rem` : undefined
+						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}${attributes.sliderUnit})` : `none`,
+						padding: attributes.titlePadding ? attributes.titlePadding + attributes.sliderUnit : undefined
 					}}
 				/>
 			)}

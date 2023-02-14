@@ -24,7 +24,7 @@ import Slider from "./slider";
 export default function save({ attributes }) {
 	return (
 		<div
-			style={{ top: `${attributes.titleTopPosition}${attributes.titleMarginUnit}`, }}
+			style={{ top: `${attributes.titleTopPosition}${attributes.sliderUnit}`, }}
 			className={`position-relative slide-number-${attributes.numberOfImagesPerSlide}`}
 			count={attributes.numberOfImagesPerSlide}
 		>
@@ -35,8 +35,8 @@ export default function save({ attributes }) {
 					value={attributes.title}
 					style={{
 						background: attributes.sliderBackground,
-						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}rem)` : `none`,
-						padding: attributes.titlePadding ? attributes.titlePadding + `rem` : undefined
+						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}${attributes.sliderUnit})` : `none`,
+						padding: attributes.titlePadding ? attributes.titlePadding + attributes.sliderUnit : undefined
 					}}
 				/>
 			) : null}

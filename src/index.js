@@ -100,7 +100,7 @@ registerBlockType("keitaro/logo-slider", {
 			type: "number",
 			default: "-4",
 		},
-		titleMarginUnit: {
+		sliderUnit: {
 			type: "string",
 			default: "rem",
 		},
@@ -118,10 +118,6 @@ registerBlockType("keitaro/logo-slider", {
 			type: "number",
 			default: 50,
 			minimum: 1,
-		},
-		typeOfProperties: {
-			type: "string",
-			default: "px",
 		},
 		sliderId: {
 			type: "string",
