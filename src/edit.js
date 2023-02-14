@@ -71,7 +71,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 					/>
 					<CheckboxControl
 						label={`Show Title`}
-						help={`Toggles the visibility of the slider title`}
+						help={`Toggles the visibility of the slider title and enables additional title options`}
 						checked={attributes.showTitle}
 						onChange={() => setAttributes({ showTitle: !attributes.showTitle })}
 					/>
