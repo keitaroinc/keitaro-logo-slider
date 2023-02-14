@@ -24,7 +24,7 @@ import Slider from "./slider";
 export default function save({ attributes }) {
 	return (
 		<div
-			style={{ top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`, }}
+			style={{ top: `${attributes.titleTopPosition}${attributes.titleMarginUnit}`, }}
 			className={`position-relative slide-number-${attributes.numberOfImagesPerSlide}`}
 			count={attributes.numberOfImagesPerSlide}
 		>

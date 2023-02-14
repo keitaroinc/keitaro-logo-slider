@@ -56,7 +56,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 	const mediaPreview = <Slider attributes={attributes} />;
 
 	return (
-		<div className={`position-relative ${className}`} style={{ top: `${attributes.titleTopPosition + attributes.titlePadding}${attributes.titleMarginUnit}`, }}>
+		<div className={`position-relative ${className}`} style={{ top: `${attributes.titleTopPosition}${attributes.titleMarginUnit}`, }}>
 			<InspectorControls>
 				<PanelBody title={__("Slider Options")}>
 					<SelectControl
