@@ -25,7 +25,7 @@ export default function Slider({ attributes }) {
 			data-bs-ride="carousel"
 		>
 			<div className="carousel-inner">
-				{attributes.logos ? (
+				{attributes.logos && (
 					chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
 						(val, key) => (
 							<div
@@ -48,8 +48,6 @@ export default function Slider({ attributes }) {
 							</div>
 						)
 					)
-				) : (
-					<p>Upload images</p>
 				)}
 			</div>
 			<button
