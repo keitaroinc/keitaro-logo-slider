@@ -46,7 +46,6 @@ import Slider from "./slider";
 import { titleWithUnit } from "./helpers";
 
 export default function Edit({ className, attributes, setAttributes }) {
-
 	React.useEffect(() => {
 		if (attributes.sliderId === null) {
 			const randomNumber = (Math.random() + 1).toString(36).substring(7);
@@ -57,7 +56,12 @@ export default function Edit({ className, attributes, setAttributes }) {
 	const mediaPreview = <Slider attributes={attributes} />;
 
 	return (
-		<div className={`position-relative ${className}`} style={{ marginTop: `${attributes.titleTopPosition}${attributes.sliderUnit}` }}>
+		<div
+			className={`position-relative ${className}`}
+			style={{
+				marginTop: `${attributes.titleTopPosition}${attributes.sliderUnit}`,
+			}}
+		>
 			<InspectorControls>
 				<PanelBody title={__("Slider Options")}>
 					<RadioControl
@@ -83,6 +87,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						options={[
 							{ label: "Slide", value: "slide" },
 							{ label: "Fade", value: "carousel-fade" },
+							{ label: "Slide + Fade", value: "slide carousel-fade" },
 						]}
 						onChange={(value) => setAttributes({ sliderTransition: value })}
 						__nextHasNoMarginBottom
@@ -97,7 +102,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 				<PanelBody opened={attributes.showTitle} title={__("Title Options")}>
 					<React.Fragment>
 						<RangeControl
-							label={titleWithUnit('Padding', attributes.sliderUnit)}
+							label={titleWithUnit("Padding", attributes.sliderUnit)}
 							value={parseInt(attributes.titlePadding)}
 							onChange={(value) => setAttributes({ titlePadding: value })}
 							min={0}
@@ -105,7 +110,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 							step={1}
 						/>
 						<RangeControl
-							label={titleWithUnit('Top Position', attributes.sliderUnit)}
+							label={titleWithUnit("Top Position", attributes.sliderUnit)}
 							value={parseInt(attributes.titleTopPosition)}
 							onChange={(value) => setAttributes({ titleTopPosition: value })}
 							min={-100.0}
@@ -116,16 +121,22 @@ export default function Edit({ className, attributes, setAttributes }) {
 							label={`Blur Background`}
 							help={`Blurs the background of the slider title when background color is translucent`}
 							checked={attributes.blurTitlePlaceholder}
-							onChange={() => setAttributes({ blurTitlePlaceholder: !attributes.blurTitlePlaceholder })}
+							onChange={() =>
+								setAttributes({
+									blurTitlePlaceholder: !attributes.blurTitlePlaceholder,
+								})
+							}
 						/>
-						{attributes.blurTitlePlaceholder && <RangeControl
-							label={titleWithUnit('Blur Size', attributes.sliderUnit)}
-							value={parseInt(attributes.blurTitleSize)}
-							onChange={(value) => setAttributes({ blurTitleSize: value })}
-							min={0}
-							max={20}
-							step={1}
-						/>}
+						{attributes.blurTitlePlaceholder && (
+							<RangeControl
+								label={titleWithUnit("Blur Size", attributes.sliderUnit)}
+								value={parseInt(attributes.blurTitleSize)}
+								onChange={(value) => setAttributes({ blurTitleSize: value })}
+								min={0}
+								max={20}
+								step={1}
+							/>
+						)}
 					</React.Fragment>
 				</PanelBody>
 				<PanelBody title={__("Logo Options")}>
@@ -139,14 +150,14 @@ export default function Edit({ className, attributes, setAttributes }) {
 						max={attributes.logos ? attributes.logos.length : 10}
 					/>
 					<RangeControl
-						label={titleWithUnit('Maximum Logo Width', attributes.sliderUnit)}
+						label={titleWithUnit("Maximum Logo Width", attributes.sliderUnit)}
 						value={parseInt(attributes.widthOfImages)}
 						onChange={(value) => setAttributes({ widthOfImages: value })}
 						min={1}
 						max={200}
 					/>
 					<RangeControl
-						label={titleWithUnit('Maximum Logo Height', attributes.sliderUnit)}
+						label={titleWithUnit("Maximum Logo Height", attributes.sliderUnit)}
 						value={parseInt(attributes.heightOfImages)}
 						onChange={(value) => setAttributes({ heightOfImages: value })}
 						min={1}
@@ -177,8 +188,12 @@ export default function Edit({ className, attributes, setAttributes }) {
 					placeholder={__("Catchy title goes here...", "keitaro-logo-slider")}
 					style={{
 						background: attributes.sliderBackground,
-						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}${attributes.sliderUnit})` : `none`,
-						padding: attributes.titlePadding ? attributes.titlePadding + attributes.sliderUnit : undefined
+						backdropFilter: attributes.blurTitlePlaceholder
+							? `blur(${attributes.blurTitleSize}${attributes.sliderUnit})`
+							: `none`,
+						padding: attributes.titlePadding
+							? attributes.titlePadding + attributes.sliderUnit
+							: undefined,
 					}}
 				/>
 			)}
