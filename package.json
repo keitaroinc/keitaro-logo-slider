@@ -19,10 +19,8 @@
 		"packages-update": "wp-scripts packages-update"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^12.2.1",
-		"bootstrap": "^5.2.3"
-	},
-	"dependencies": {
-		"prettier": "^2.8.3"
+		"@wordpress/scripts": "^25.4.0",
+		"bootstrap": "^5.2.3",
+		"prettier": "^2.8.4"
 	}
 }
