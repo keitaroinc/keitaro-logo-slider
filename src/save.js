@@ -1,13 +1,13 @@
-import { RichText } from "@wordpress/block-editor";
+import { RichText } from '@wordpress/block-editor';
 
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -19,12 +19,14 @@ import { __ } from "@wordpress/i18n";
  * @return {WPElement} Element to render.
  */
 
-import Slider from "./slider";
+import Slider from './slider';
 
 export default function save({ attributes }) {
 	return (
 		<div
-			style={{ marginTop: `${attributes.titleTopPosition}${attributes.sliderUnit}` }}
+			style={{
+				marginTop: `${attributes.titleTopPosition}${attributes.sliderUnit}`,
+			}}
 			className={`position-relative slide-number-${attributes.numberOfImagesPerSlide}`}
 			count={attributes.numberOfImagesPerSlide}
 		>
@@ -35,8 +37,12 @@ export default function save({ attributes }) {
 					value={attributes.title}
 					style={{
 						background: attributes.sliderBackground,
-						backdropFilter: attributes.blurTitlePlaceholder ? `blur(${attributes.blurTitleSize}${attributes.sliderUnit})` : `none`,
-						padding: attributes.titlePadding ? attributes.titlePadding + attributes.sliderUnit : undefined
+						backdropFilter: attributes.blurTitlePlaceholder
+							? `blur(${attributes.blurTitleSize}${attributes.sliderUnit})`
+							: `none`,
+						padding: attributes.titlePadding
+							? attributes.titlePadding + attributes.sliderUnit
+							: undefined,
 					}}
 				/>
 			) : null}

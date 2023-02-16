@@ -3,14 +3,14 @@
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-import { registerBlockType } from "@wordpress/blocks";
+import { registerBlockType } from '@wordpress/blocks';
 
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -19,51 +19,51 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./style.scss";
+import './style.scss';
 
 /**
  * External dependencies
  */
-import "bootstrap/js/dist/carousel";
+import 'bootstrap/js/dist/carousel';
 
 /**
  * Internal dependencies
  */
-import Edit from "./edit";
-import save from "./save";
+import Edit from './edit';
+import save from './save';
 
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType("keitaro/logo-slider", {
+registerBlockType('keitaro/logo-slider', {
 	/**
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __("Logo Slider by Keitaro", "keitaro-logo-slider"),
+	title: __('Logo Slider by Keitaro', 'keitaro-logo-slider'),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
 	description: __(
-		"Easy to use logo slider for your WordPress website.",
-		"keitaro-logo-slider"
+		'Easy to use logo slider for your WordPress website.',
+		'keitaro-logo-slider'
 	),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.
 	 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 	 */
-	category: "media",
+	category: 'media',
 
 	/**
 	 * An icon property should be specified to make it easier to identify a block.
 	 * These can be any of WordPress’ Dashicons, or a custom svg element.
 	 */
-	icon: "image-flip-horizontal",
+	icon: 'image-flip-horizontal',
 
 	/**
 	 * Optional block extended support features.
@@ -75,85 +75,85 @@ registerBlockType("keitaro/logo-slider", {
 
 	attributes: {
 		title: {
-			type: "string",
-			source: "html",
-			selector: ".title",
-			default: __("Trusted by", "keitaro-logo-slider"),
+			type: 'string',
+			source: 'html',
+			selector: '.title',
+			default: __('Trusted by', 'keitaro-logo-slider'),
 		},
 		showTitle: {
-			type: "boolean",
+			type: 'boolean',
 			default: true,
 		},
 		titlePadding: {
-			type: "number",
+			type: 'number',
 			default: 1,
 		},
 		blurTitlePlaceholder: {
-			type: "boolean",
+			type: 'boolean',
 			default: true,
 		},
 		blurTitleSize: {
-			type: "number",
+			type: 'number',
 			default: 1,
 		},
 		titleTopPosition: {
-			type: "number",
-			default: "-4",
+			type: 'number',
+			default: '-4',
 		},
 		sliderUnit: {
-			type: "string",
-			default: "rem",
+			type: 'string',
+			default: 'rem',
 		},
 		numberOfImagesPerSlide: {
-			type: "number",
+			type: 'number',
 			default: 3,
 			minimum: 1,
 		},
 		widthOfImages: {
-			type: "number",
+			type: 'number',
 			default: 50,
 			minimum: 1,
 		},
 		heightOfImages: {
-			type: "number",
+			type: 'number',
 			default: 50,
 			minimum: 1,
 		},
 		sliderId: {
-			type: "string",
+			type: 'string',
 			default: null,
 		},
 		sliderBackground: {
-			type: "string",
-			default: "#ffffff",
+			type: 'string',
+			default: '#ffffff',
 		},
 		arrowColor: {
-			type: "string",
-			default: "#ffffff",
+			type: 'string',
+			default: '#ffffff',
 		},
 		sliderTransition: {
-			type: "string",
-			default: "slide",
+			type: 'string',
+			default: 'slide',
 		},
 		logos: {
-			type: "array",
-			source: "query",
-			selector: "img",
+			type: 'array',
+			source: 'query',
+			selector: 'img',
 			query: {
 				id: {
-					type: "string",
-					source: "attribute",
-					attribute: "id",
+					type: 'string',
+					source: 'attribute',
+					attribute: 'id',
 				},
 				url: {
-					type: "string",
-					source: "attribute",
-					attribute: "src",
+					type: 'string',
+					source: 'attribute',
+					attribute: 'src',
 				},
 				alt: {
-					type: "string",
-					source: "attribute",
-					attribute: "alt",
+					type: 'string',
+					source: 'attribute',
+					attribute: 'alt',
 				},
 			},
 		},
