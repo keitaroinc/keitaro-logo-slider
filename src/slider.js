@@ -17,43 +17,38 @@ export default function Slider({ attributes }) {
 		}
 	}
 
-	const interval = attributes.transitionInterval + '000';
-
 	return (
 		<div
 			id={`logosControls-${attributes.sliderId}`}
 			className={`carousel ${attributes.sliderTransition}`}
 			style={{ background: attributes.sliderBackground }}
 			data-bs-ride="carousel"
-			data-bs-interval={interval}
 		>
 			<div className="carousel-inner">
 				{attributes.logos &&
-					chunkArray(
-						attributes.logos,
-						attributes.numberOfImagesPerSlide
-					).map((val, key) => (
-						<div
-							key={key}
-							className={`carousel-item ${
-								key < 1 ? 'active' : ''
-							}`}
-						>
-							{val.map((item, index) => (
-								<img
-									key={index}
-									className="logo"
-									id={item.id}
-									src={item.url}
-									alt={item.alt}
-									style={{
-										maxWidth: `${attributes.widthOfImages}${attributes.sliderUnit}`,
-										maxHeight: `${attributes.heightOfImages}${attributes.sliderUnit}`,
-									}}
-								></img>
-							))}
-						</div>
-					))}
+					chunkArray(attributes.logos, attributes.numberOfImagesPerSlide).map(
+						(val, key) => (
+							<div
+								key={key}
+								className={`carousel-item ${key < 1 ? 'active' : ''}`}
+								data-bs-interval={attributes.transitionInterval}
+							>
+								{val.map((item, index) => (
+									<img
+										key={index}
+										className="logo"
+										id={item.id}
+										src={item.url}
+										alt={item.alt}
+										style={{
+											maxWidth: `${attributes.widthOfImages}${attributes.sliderUnit}`,
+											maxHeight: `${attributes.heightOfImages}${attributes.sliderUnit}`,
+										}}
+									></img>
+								))}
+							</div>
+						)
+					)}
 			</div>
 			<button
 				className="carousel-control-prev"

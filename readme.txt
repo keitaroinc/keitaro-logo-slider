@@ -3,7 +3,7 @@ Contributors:      Goce Mitevski, Hristijan Petkovski
 Tags:              block
 Requires at least: 5.3.2
 Tested up to:      5.4.1
-Stable tag:        0.2.5
+Stable tag:        0.2.6
 Requires PHP:      7.0.0
 License:           Apache-2.0
 License URI:       https://www.apache.org/licenses/LICENSE-2.0
@@ -54,8 +54,12 @@ When preparing a PR, please build and commit all assets from `/build` by running
 
 == Changelog ==
 
+= 0.2.6 =
+* Add Transition Interval option
+* Modify default option values
+
 = 0.2.5 =
-- Fix npm vulnerabilites
+* Fix npm vulnerabilites
 
 = 0.2.4 =
 * Fix Slide + Fade effect inconsistencies
