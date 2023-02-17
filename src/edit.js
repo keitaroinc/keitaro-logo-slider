@@ -95,7 +95,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						onChange={(value) => setAttributes({ sliderTransition: value })}
 					/>
 					<RangeControl
-						label={`Transition Interval (seconds)`}
+						label={`Transition Interval (milliseconds)`}
 						value={parseInt(attributes.transitionInterval)}
 						onChange={(value) => setAttributes({ transitionInterval: value })}
 						min={1000}
