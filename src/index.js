@@ -137,7 +137,7 @@ registerBlockType('keitaro/logo-slider', {
 		},
 		transitionInterval: {
             type: 'number',
-            default: 5,
+            default: 5000,
         },
 		logos: {
 			type: 'array',

@@ -103,9 +103,9 @@ export default function Edit({ className, attributes, setAttributes }) {
                         label={`Transition Interval (seconds)`}
                         value={parseInt(attributes.transitionInterval)}
                         onChange={(value) => setAttributes({ transitionInterval: value })}
-                        min={1}
-                        max={10}
-                        step={1}
+                        min={1000}
+                        max={10000}
+                        step={100}
                     />
 					<CheckboxControl
 						label={`Show Title`}
