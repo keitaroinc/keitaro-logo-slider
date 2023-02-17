@@ -93,7 +93,6 @@ export default function Edit({ className, attributes, setAttributes }) {
 							},
 						]}
 						onChange={(value) => setAttributes({ sliderTransition: value })}
-						__nextHasNoMarginBottom
 					/>
 					<RangeControl
 						label={`Transition Interval (seconds)`}
