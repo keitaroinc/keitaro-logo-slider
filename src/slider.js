@@ -17,12 +17,15 @@ export default function Slider({ attributes }) {
 		}
 	}
 
+	const interval = attributes.transitionInterval + '000';
+
 	return (
 		<div
 			id={`logosControls-${attributes.sliderId}`}
 			className={`carousel ${attributes.sliderTransition}`}
 			style={{ background: attributes.sliderBackground }}
 			data-bs-ride="carousel"
+			data-bs-interval={interval}
 		>
 			<div className="carousel-inner">
 				{attributes.logos &&

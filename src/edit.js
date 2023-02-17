@@ -99,6 +99,14 @@ export default function Edit({ className, attributes, setAttributes }) {
 						}
 						__nextHasNoMarginBottom
 					/>
+					<RangeControl
+                        label={`Transition Interval (seconds)`}
+                        value={parseInt(attributes.transitionInterval)}
+                        onChange={(value) => setAttributes({ transitionInterval: value })}
+                        min={1}
+                        max={10}
+                        step={1}
+                    />
 					<CheckboxControl
 						label={`Show Title`}
 						help={`Toggles the visibility of the slider title and enables additional title options`}
