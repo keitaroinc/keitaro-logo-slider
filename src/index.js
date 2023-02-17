@@ -98,7 +98,7 @@ registerBlockType('keitaro/logo-slider', {
 		},
 		titleTopPosition: {
 			type: 'number',
-			default: '-4',
+			default: '0',
 		},
 		sliderUnit: {
 			type: 'string',
@@ -111,12 +111,12 @@ registerBlockType('keitaro/logo-slider', {
 		},
 		widthOfImages: {
 			type: 'number',
-			default: 50,
+			default: 5,
 			minimum: 1,
 		},
 		heightOfImages: {
 			type: 'number',
-			default: 50,
+			default: 5,
 			minimum: 1,
 		},
 		sliderId: {
@@ -133,7 +133,7 @@ registerBlockType('keitaro/logo-slider', {
 		},
 		sliderTransition: {
 			type: 'string',
-			default: 'slide',
+			default: 'slide carousel-fade',
 		},
 		logos: {
 			type: 'array',
