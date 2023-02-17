@@ -68,9 +68,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						label="Unit"
 						help="The unit used while calculating the size of the elements within the slider"
 						selected={attributes.sliderUnit}
-						onChange={(value) =>
-							setAttributes({ sliderUnit: value })
-						}
+						onChange={(value) => setAttributes({ sliderUnit: value })}
 						options={[
 							{ label: 'Pixels (px)', value: 'px' },
 							{
@@ -94,55 +92,38 @@ export default function Edit({ className, attributes, setAttributes }) {
 								value: 'slide carousel-fade',
 							},
 						]}
-						onChange={(value) =>
-							setAttributes({ sliderTransition: value })
-						}
+						onChange={(value) => setAttributes({ sliderTransition: value })}
 						__nextHasNoMarginBottom
 					/>
 					<RangeControl
-                        label={`Transition Interval (seconds)`}
-                        value={parseInt(attributes.transitionInterval)}
-                        onChange={(value) => setAttributes({ transitionInterval: value })}
-                        min={1000}
-                        max={10000}
-                        step={100}
-                    />
+						label={`Transition Interval (seconds)`}
+						value={parseInt(attributes.transitionInterval)}
+						onChange={(value) => setAttributes({ transitionInterval: value })}
+						min={1000}
+						max={10000}
+						step={100}
+					/>
 					<CheckboxControl
 						label={`Show Title`}
 						help={`Toggles the visibility of the slider title and enables additional title options`}
 						checked={attributes.showTitle}
-						onChange={() =>
-							setAttributes({ showTitle: !attributes.showTitle })
-						}
+						onChange={() => setAttributes({ showTitle: !attributes.showTitle })}
 					/>
 				</PanelBody>
-				<PanelBody
-					opened={attributes.showTitle}
-					title={__('Title Options')}
-				>
+				<PanelBody opened={attributes.showTitle} title={__('Title Options')}>
 					<React.Fragment>
 						<RangeControl
-							label={titleWithUnit(
-								'Padding',
-								attributes.sliderUnit
-							)}
+							label={titleWithUnit('Padding', attributes.sliderUnit)}
 							value={parseInt(attributes.titlePadding)}
-							onChange={(value) =>
-								setAttributes({ titlePadding: value })
-							}
+							onChange={(value) => setAttributes({ titlePadding: value })}
 							min={0}
 							max={10}
 							step={1}
 						/>
 						<RangeControl
-							label={titleWithUnit(
-								'Top Position',
-								attributes.sliderUnit
-							)}
+							label={titleWithUnit('Top Position', attributes.sliderUnit)}
 							value={parseInt(attributes.titleTopPosition)}
-							onChange={(value) =>
-								setAttributes({ titleTopPosition: value })
-							}
+							onChange={(value) => setAttributes({ titleTopPosition: value })}
 							min={-100.0}
 							max={100.0}
 							step={attributes.sliderUnit !== 'px' ? 0.1 : 1}
@@ -153,21 +134,15 @@ export default function Edit({ className, attributes, setAttributes }) {
 							checked={attributes.blurTitlePlaceholder}
 							onChange={() =>
 								setAttributes({
-									blurTitlePlaceholder:
-										!attributes.blurTitlePlaceholder,
+									blurTitlePlaceholder: !attributes.blurTitlePlaceholder,
 								})
 							}
 						/>
 						{attributes.blurTitlePlaceholder && (
 							<RangeControl
-								label={titleWithUnit(
-									'Blur Size',
-									attributes.sliderUnit
-								)}
+								label={titleWithUnit('Blur Size', attributes.sliderUnit)}
 								value={parseInt(attributes.blurTitleSize)}
-								onChange={(value) =>
-									setAttributes({ blurTitleSize: value })
-								}
+								onChange={(value) => setAttributes({ blurTitleSize: value })}
 								min={0}
 								max={20}
 								step={1}
@@ -186,47 +161,31 @@ export default function Edit({ className, attributes, setAttributes }) {
 						max={attributes.logos ? attributes.logos.length : 10}
 					/>
 					<RangeControl
-						label={titleWithUnit(
-							'Maximum Logo Width',
-							attributes.sliderUnit
-						)}
+						label={titleWithUnit('Maximum Logo Width', attributes.sliderUnit)}
 						value={parseInt(attributes.widthOfImages)}
-						onChange={(value) =>
-							setAttributes({ widthOfImages: value })
-						}
+						onChange={(value) => setAttributes({ widthOfImages: value })}
 						min={1}
 						max={200}
 					/>
 					<RangeControl
-						label={titleWithUnit(
-							'Maximum Logo Height',
-							attributes.sliderUnit
-						)}
+						label={titleWithUnit('Maximum Logo Height', attributes.sliderUnit)}
 						value={parseInt(attributes.heightOfImages)}
-						onChange={(value) =>
-							setAttributes({ heightOfImages: value })
-						}
+						onChange={(value) => setAttributes({ heightOfImages: value })}
 						min={1}
 						max={200}
 					/>
 				</PanelBody>
 				<PanelBody title={__('Color Options')}>
-					<label className="label-background">
-						Slider Background
-					</label>
+					<label className="label-background">Slider Background</label>
 					<ColorPicker
 						color={attributes.sliderBackground}
-						onChange={(value) =>
-							setAttributes({ sliderBackground: value })
-						}
+						onChange={(value) => setAttributes({ sliderBackground: value })}
 						enableAlpha
 					/>
 					<label className="label-background">Arrow Color</label>
 					<ColorPicker
 						color={attributes.arrowColor}
-						onChange={(value) =>
-							setAttributes({ arrowColor: value })
-						}
+						onChange={(value) => setAttributes({ arrowColor: value })}
 						enableAlpha
 					/>
 				</PanelBody>
@@ -237,10 +196,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 					className="title"
 					value={attributes.title}
 					onChange={(content) => setAttributes({ title: content })}
-					placeholder={__(
-						'Catchy title goes here...',
-						'keitaro-logo-slider'
-					)}
+					placeholder={__('Catchy title goes here...', 'keitaro-logo-slider')}
 					style={{
 						background: attributes.sliderBackground,
 						backdropFilter: attributes.blurTitlePlaceholder
