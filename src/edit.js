@@ -98,7 +98,7 @@ export default function Edit({ className, attributes, setAttributes }) {
 						label={`Transition Interval (milliseconds)`}
 						value={parseInt(attributes.transitionInterval)}
 						onChange={(value) => setAttributes({ transitionInterval: value })}
-						min={1000}
+						min={100}
 						max={10000}
 						step={100}
 					/>
