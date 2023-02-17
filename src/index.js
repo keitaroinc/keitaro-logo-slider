@@ -135,6 +135,10 @@ registerBlockType('keitaro/logo-slider', {
 			type: 'string',
 			default: 'slide carousel-fade',
 		},
+		transitionInterval: {
+            type: 'number',
+            default: 5,
+        },
 		logos: {
 			type: 'array',
 			source: 'query',
