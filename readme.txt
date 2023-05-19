@@ -3,7 +3,7 @@ Contributors:      Goce Mitevski, Hristijan Petkovski
 Tags:              block
 Requires at least: 5.3.2
 Tested up to:      5.4.1
-Stable tag:        0.2.6
+Stable tag:        0.2.7
 Requires PHP:      7.0.0
 License:           Apache-2.0
 License URI:       https://www.apache.org/licenses/LICENSE-2.0
@@ -53,6 +53,9 @@ Once `wp-env` is started run `npm start` to start the development server for the
 When preparing a PR, please build and commit all assets from `/build` by running `npm run build` instead of `npm start` - so we get production-ready code in the main codebase.
 
 == Changelog ==
+
+= 0.2.7 =
+* Set 'decoding' attribute to 'auto' to slider images
 
 = 0.2.6 =
 * Add Transition Interval option
