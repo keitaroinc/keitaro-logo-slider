@@ -36,6 +36,7 @@ export default function Slider({ attributes }) {
 								{val.map((item, index) => (
 									<img
 										key={index}
+										decoding='async'
 										className="logo"
 										id={item.id}
 										src={item.url}
